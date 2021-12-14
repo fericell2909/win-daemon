@@ -1,0 +1,11 @@
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComTipos\bin\Release\net5.0\ComTipos.deps.json
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComTipos\bin\Release\net5.0\ComTipos.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComTipos\bin\Release\net5.0\ref\ComTipos.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComTipos\bin\Release\net5.0\ComTipos.pdb
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComTipos\obj\Release\net5.0\ComTipos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComTipos\obj\Release\net5.0\ComTipos.AssemblyInfoInputs.cache
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComTipos\obj\Release\net5.0\ComTipos.AssemblyInfo.cs
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComTipos\obj\Release\net5.0\ComTipos.csproj.CoreCompileInputs.cache
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComTipos\obj\Release\net5.0\ComTipos.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComTipos\obj\Release\net5.0\ref\ComTipos.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComTipos\obj\Release\net5.0\ComTipos.pdb

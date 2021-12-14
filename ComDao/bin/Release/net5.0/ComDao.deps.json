@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "ComDao/1.0.0": {
+        "dependencies": {
+          "ComTipos": "1.0.0",
+          "Oracle.ManagedDataAccess": "4.122.18.3"
+        },
+        "runtime": {
+          "ComDao.dll": {}
+        }
+      },
+      "ComTipos/1.0.0": {
+        "runtime": {
+          "ComTipos.dll": {}
+        }
+      },
+      "Oracle.ManagedDataAccess/4.122.18.3": {
+        "runtime": {
+          "Oracle.ManagedDataAccess.dll": {
+            "assemblyVersion": "4.122.18.3",
+            "fileVersion": "4.122.18.3"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ComDao/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ComTipos/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Oracle.ManagedDataAccess/4.122.18.3": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "WinProcesosManual/1.0.0": {
+        "dependencies": {
+          "Oracle.ManagedDataAccess": "4.122.18.3"
+        },
+        "runtime": {
+          "WinProcesosManual.dll": {}
+        }
+      },
+      "Oracle.ManagedDataAccess/4.122.18.3": {
+        "runtime": {
+          "Oracle.ManagedDataAccess.dll": {
+            "assemblyVersion": "4.122.18.3",
+            "fileVersion": "4.122.18.3"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WinProcesosManual/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Oracle.ManagedDataAccess/4.122.18.3": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

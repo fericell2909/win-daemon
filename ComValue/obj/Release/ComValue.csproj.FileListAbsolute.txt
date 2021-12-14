@@ -1,0 +1,10 @@
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComValue\bin\Release\ComValue.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComValue\bin\Release\ComValue.pdb
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComValue\obj\Release\ComValue.csproj.CoreCompileInputs.cache
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComValue\obj\Release\ComValue.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComValue\obj\Release\ComValue.pdb
+F:\Repositorios\amsmprocesosautomaticos\ComValue\bin\Release\ComValue.dll
+F:\Repositorios\amsmprocesosautomaticos\ComValue\bin\Release\ComValue.pdb
+F:\Repositorios\amsmprocesosautomaticos\ComValue\obj\Release\ComValue.csproj.CoreCompileInputs.cache
+F:\Repositorios\amsmprocesosautomaticos\ComValue\obj\Release\ComValue.dll
+F:\Repositorios\amsmprocesosautomaticos\ComValue\obj\Release\ComValue.pdb

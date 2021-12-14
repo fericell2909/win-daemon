@@ -1,0 +1,16 @@
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\bin\Release\net5.0\ComDao.deps.json
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\bin\Release\net5.0\ComDao.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\bin\Release\net5.0\ref\ComDao.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\bin\Release\net5.0\ComDao.pdb
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\bin\Release\net5.0\Oracle.ManagedDataAccess.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\obj\Release\net5.0\ComDao.csproj.AssemblyReference.cache
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\obj\Release\net5.0\ComDao.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\obj\Release\net5.0\ComDao.AssemblyInfoInputs.cache
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\obj\Release\net5.0\ComDao.AssemblyInfo.cs
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\obj\Release\net5.0\ComDao.csproj.CoreCompileInputs.cache
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\obj\Release\net5.0\ComDao.csproj.CopyComplete
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\obj\Release\net5.0\ComDao.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\obj\Release\net5.0\ref\ComDao.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\obj\Release\net5.0\ComDao.pdb
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\bin\Release\net5.0\ComTipos.dll
+C:\Users\sgonzalez\source\repos\amsmprocesosautomaticos\ComDao\bin\Release\net5.0\ComTipos.pdb

@@ -1,0 +1,21 @@
+c:\users\ProyectoA\documents\visual studio 2015\Projects\AccesoNavitoOracle\AccesoNavitoOracle\bin\Debug\AccesoNavitoOracle.exe.config
+c:\users\ProyectoA\documents\visual studio 2015\Projects\AccesoNavitoOracle\AccesoNavitoOracle\bin\Debug\AccesoNavitoOracle.exe
+c:\users\ProyectoA\documents\visual studio 2015\Projects\AccesoNavitoOracle\AccesoNavitoOracle\bin\Debug\AccesoNavitoOracle.pdb
+c:\users\ProyectoA\documents\visual studio 2015\Projects\AccesoNavitoOracle\AccesoNavitoOracle\bin\Debug\Oracle.ManagedDataAccess.dll
+c:\users\ProyectoA\documents\visual studio 2015\Projects\AccesoNavitoOracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.csprojResolveAssemblyReference.cache
+c:\users\ProyectoA\documents\visual studio 2015\Projects\AccesoNavitoOracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.formMenuPrincipal.resources
+c:\users\ProyectoA\documents\visual studio 2015\Projects\AccesoNavitoOracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.Properties.Resources.resources
+c:\users\ProyectoA\documents\visual studio 2015\Projects\AccesoNavitoOracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.csproj.GenerateResource.Cache
+c:\users\ProyectoA\documents\visual studio 2015\Projects\AccesoNavitoOracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.exe
+c:\users\ProyectoA\documents\visual studio 2015\Projects\AccesoNavitoOracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.pdb
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\bin\Debug\AccesoNavitoOracle.exe.config
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\bin\Debug\AccesoNavitoOracle.exe
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\bin\Debug\AccesoNavitoOracle.pdb
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.csproj.AssemblyReference.cache
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.formMenuPrincipal.resources
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.Properties.Resources.resources
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.csproj.GenerateResource.cache
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.csproj.CoreCompileInputs.cache
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.csproj.CopyComplete
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.exe
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Debug\AccesoNavitoOracle.pdb

@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "02d321ff-d5ba-41ea-b0d9-071a8dd5b495": {
+      "ProjectGuid": "02d321ff-d5ba-41ea-b0d9-071a8dd5b495",
+      "DisplayName": "WinManualProcesoAutomatico",
+      "ColorIndex": 0
+    },
+    "eff24c3f-fb02-4ae9-955d-c5c28b046442": {
+      "ProjectGuid": "eff24c3f-fb02-4ae9-955d-c5c28b046442",
+      "DisplayName": "WinManual",
+      "ColorIndex": 1
+    },
+    "c6be0f02-4171-40be-8135-e46f4f3d65d4": {
+      "ProjectGuid": "c6be0f02-4171-40be-8135-e46f4f3d65d4",
+      "DisplayName": "ComAcceso",
+      "ColorIndex": 2
+    },
+    "7b769d62-d586-4697-8ec6-fffd6e784bfa": {
+      "ProjectGuid": "7b769d62-d586-4697-8ec6-fffd6e784bfa",
+      "DisplayName": "ComValue",
+      "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 4
+}

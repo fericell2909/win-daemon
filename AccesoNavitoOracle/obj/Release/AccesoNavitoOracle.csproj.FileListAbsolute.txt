@@ -1,0 +1,11 @@
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Release\AccesoNavitoOracle.formMenuPrincipal.resources
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Release\AccesoNavitoOracle.Properties.Resources.resources
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Release\AccesoNavitoOracle.csproj.GenerateResource.cache
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Release\AccesoNavitoOracle.csproj.CoreCompileInputs.cache
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\bin\Release\AccesoNavitoOracle.exe.config
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\bin\Release\AccesoNavitoOracle.exe
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\bin\Release\AccesoNavitoOracle.pdb
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\bin\Release\Oracle.ManagedDataAccess.dll
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Release\AccesoNavitoOracle.csproj.CopyComplete
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Release\AccesoNavitoOracle.exe
+C:\Users\sgonzalez\Downloads\ProyectoA_Acceso_Navito_Oracle\AccesoNavitoOracle\obj\Release\AccesoNavitoOracle.pdb
