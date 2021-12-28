@@ -41,16 +41,17 @@ namespace ComAcceso
             objStringProcesos.Add(objStrAuxProceso);
 
         }
-        public List<ComValue.IngresoPam> GetIngresoPams() {
+        public List<ComValue.IngresoPam> GetIngresoPams(string d_ini , string d_end) {
             
             List<ComValue.IngresoPam> oListResult = new List<ComValue.IngresoPam>();
-
+            // d_ini : 2021-01-02
+            // d_end : 2021-01-03
             try
             {
 
                 objOraConnect.Open();
 
-                objComand = new OracleCommand(objQueryMedysin.Get_ingreso_pam("2021-01-02", "2021-01-03"), objOraConnect);
+                objComand = new OracleCommand(objQueryMedysin.ingreso_pam(d_ini, d_end), objOraConnect);
                 //objComand = new OracleCommand("select ccp.* from cta_consumos_prestacion ccp where rownum= 1", objOraConnect);
                 
                 objComand.CommandType = System.Data.CommandType.Text;

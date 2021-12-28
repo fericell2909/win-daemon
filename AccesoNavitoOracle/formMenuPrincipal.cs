@@ -15,13 +15,10 @@ namespace AccesoNavitoOracle
 {
     public partial class formMenuPrincipal : Form
     {
-        private Boolean loading;
         private int production;
-        private string lblambiente;
         public formMenuPrincipal()
         {
             InitializeComponent();
-            this.loading = true;
             production  = Int32.Parse(System.Configuration.ConfigurationManager.AppSettings["production"]);
 
             if(production == 1){
@@ -29,6 +26,7 @@ namespace AccesoNavitoOracle
                 this.lblModo.Text = "PRODUCCION";
                 this.lblModo.ForeColor = System.Drawing.Color.Red;
                 this.lblModoCaption.ForeColor = System.Drawing.Color.Red;
+                
             } else
             {
                 this.linklabel.Text = System.Configuration.ConfigurationManager.AppSettings["url_intranet_staging"];
@@ -36,6 +34,87 @@ namespace AccesoNavitoOracle
                 this.lblModo.ForeColor = System.Drawing.Color.Green;
                 this.lblModoCaption.ForeColor = System.Drawing.Color.Green;
             }
+
+            this.lblrutacsv.Text = System.Configuration.ConfigurationManager.AppSettings["ruta_csv"];
+
+            this.dglistado.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            this.Shown += new EventHandler(formMenuPrincipal_Shown);
+
+        }
+
+        private void CargarGrilla()
+        {
+
+            ComAcceso.ProcesosAutomaticos oAcceso = new ComAcceso.ProcesosAutomaticos();
+            List<ComValue.GridProceso> oListGridProceso = new List<ComValue.GridProceso>();
+            oListGridProceso = oAcceso.List_Procesos_Automaticos();
+
+            Button btn = new Button();
+            btn.Text = "Ejecutar";
+
+            foreach (ComValue.GridProceso ogrid in oListGridProceso)
+            {
+                dglistado.Rows.Add(ogrid.id, ogrid.nombre, ogrid.ultimaejecucion, ogrid.actualizadohasta, ogrid.rangodesde, ogrid.rangohasta, btn);
+            
+            }
+
+        }
+
+        private void btnClean_Click(object sender, EventArgs e)
+        {
+
+
+            this.txtServidorOracle.Text = "";
+            this.txtPuerto.Text = "";
+            this.txtNombreServicio.Text = "";
+            this.txtUsuario.Text = "";
+            this.txtContrasena.Text = "";
+            this.txtLog.Text = "";
+
+        }
+
+        private void formMenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+            this.VisibleGrilla(false);
+
+        }
+
+        private void formMenuPrincipal_Shown(Object sender, EventArgs e)
+        {
+             this.CargarGrilla();
+
+            this.VisibleGrilla(true);
+
+        }
+
+        private void VisibleGrilla(Boolean bvalue)
+        {
+            this.dglistado.Visible = bvalue;
+            this.lblcargando.Visible = !bvalue;
+        }
+
+        private void dglistado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (dglistado.CurrentCell.ColumnIndex.Equals(7))
+            {
+     
+                   // MessageBox.Show(dglistado.CurrentCell.Value.ToString());
+                    this.dglistado.Visible = false;
+                    this.lblcargando.Visible = true;
+                    this.lblcargando.Text = "Generando CSV - Ingreso Flujo PAM . . .";
+                    
+                    ComAcceso.CsvExport o = new ComAcceso.CsvExport("ingreso_pam");
+                    this.dglistado.Visible = true;
+                    this.lblcargando.Text = "";
+                    this.lblcargando.Visible = false;
+
+                    MessageBox.Show("CSV Generado Correctamente", "Atencion, Aviso Importante");
+
+            }
+            
         }
 
         private void btConectar_Click(object sender, EventArgs e)
@@ -62,60 +141,6 @@ namespace AccesoNavitoOracle
                 }
                 txtLog.AppendText("Error al conectar a Oracle: " + ex);
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            /*
-            
-            List<ComValue.IngresoPam> oListPam = new List<ComValue.IngresoPam>();
-            ComAcceso.ProcesosAutomaticos oAcceso = new ComAcceso.ProcesosAutomaticos();
-
-            oListPam = oAcceso.Ejecutar_IngresoPam();
-
-            MessageBox.Show(oListPam.Count.ToString(), "MEnsajes xyz");
-
-            */
-            ComAcceso.ProcesosAutomaticos oAcceso = new ComAcceso.ProcesosAutomaticos();
-            List<ComValue.GridProceso> oListGridProceso = new List<ComValue.GridProceso>();
-            oListGridProceso = oAcceso.List_Procesos_Automaticos();
-        }
-
-        private void btnClean_Click(object sender, EventArgs e)
-        {
-
-
-            this.txtServidorOracle.Text = "";
-            this.txtPuerto.Text = "";
-            this.txtNombreServicio.Text = "";
-            this.txtUsuario.Text = "";
-            this.txtContrasena.Text = "";
-            this.txtLog.Text = "";
-
-        }
-
-        private void formMenuPrincipal_Load(object sender, EventArgs e)
-        {
-            if (this.loading) {
-
-                this.dglistado.Visible = false;
-
-                //string configvalue1 = ConfigurationManager.AppSettings["countoffiles"];
-                /*
-                    Obtener Listado para grilla
-                 */
-                //MessageBox.Show("Caption", configvalue1);
-
-            } else
-            {
-                this.dglistado.Visible = true;
-            }
-        }
-
-        private void lblcargando_Click(object sender, EventArgs e)
-        {
-
-
         }
     }
 }

@@ -18,6 +18,7 @@ namespace ComAcceso
         {
             return this.oRecords == null ? new Records() : this.oRecords;
         }
+        /*
         public List<ComValue.IngresoPam> Ejecutar_IngresoPam()
         {
             List<ComValue.IngresoPam> oListIngresoPam = new List<ComValue.IngresoPam>();
@@ -25,7 +26,7 @@ namespace ComAcceso
             oListIngresoPam = this.getInstanceRecords().GetIngresoPams();
             return oListIngresoPam;
         }
-
+        */
         public List<ComValue.GridProceso> List_Procesos_Automaticos()
         {
 
@@ -37,5 +38,9 @@ namespace ComAcceso
             return oLisGridProceso;
 
         }
+
+
+
+
     }
 }

@@ -7,26 +7,26 @@ namespace ComValue
     public class IngresoPam
     {
 
-        public object id_ingreso;
-        public object rut_prof;
-        public object cod_prestacion;
-        public object pam_numero;
-        public object rol_prof;
-        public object cod_isapre;
-        public object cant_ate;
-        public object fecha_ingreso_pam;
-        public object fecha_visacion;
-        public object resp_visacion;
-        public object prestacion_total;
-        public object id_consumo;
-        public object recargo_urgencia_habil;
-        public object recargo_urgencia_inhabil;
-        public object cobertura_isapre;
-        public object seguro_escolar;
-        public object ley_urgencia;
-        public object fecha_consumo;
-        public object cobro_paquete;
-        public object codigo_paquete;
+        public object id_ingreso { get; set; }
+        public object rut_prof { get; set; }
+        public object cod_prestacion { get; set; }
+        public object pam_numero { get; set; }
+        public object rol_prof { get; set; }
+        public object cod_isapre { get; set; }
+        public object cant_ate { get; set; }
+        public object fecha_ingreso_pam { get; set; }
+        public object fecha_visacion { get; set; }
+        public object resp_visacion { get; set; }
+        public object prestacion_total { get; set; }
+        public object id_consumo { get; set; }
+        public object recargo_urgencia_habil { get; set; }
+        public object recargo_urgencia_inhabil { get; set; }
+        public object cobertura_isapre { get; set; }
+        public object seguro_escolar { get; set; }
+        public object ley_urgencia { get; set; }
+        public object fecha_consumo { get; set; }
+        public object cobro_paquete { get; set; }
+        public object codigo_paquete { get; set; }
 
         public void Agregar(object p_id_ingreso, object p_rut_prof, object p_cod_prestacion, object p_pam_numero, object p_rol_prof, object p_cod_isapre, object p_cant_ate, object p_fecha_ingreso_pam, object p_fecha_visacion, object p_resp_visacion, object p_prestacion_total, object p_id_consumo, object p_recargo_urgencia_habil, object p_recargo_urgencia_inhabil, object p_cobertura_isapre, object p_seguro_escolar, object p_ley_urgencia, object p_fecha_consumo, object p_cobro_paquete, object p_codigo_paquete)
         {

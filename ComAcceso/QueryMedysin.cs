@@ -12,7 +12,7 @@ namespace ComAcceso
     {
 
 
-        public string Get_ingreso_pam(string desde, string hasta )
+        public string ingreso_pam(string desde, string hasta )
         {
 
             string f_desde = desde;
