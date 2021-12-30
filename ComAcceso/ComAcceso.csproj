@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="CsvExport.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="Eject.cs" />
     <Compile Include="HttpClient.cs" />
     <Compile Include="ProcesosAutomaticos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

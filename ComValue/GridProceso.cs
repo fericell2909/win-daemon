@@ -17,8 +17,9 @@ namespace ComValue
         public object actualizadohasta;
         public object rangodesde;
         public object rangohasta;
+        public object tiempo;
 
-        public void add(object p_id, object p_description, object p_nombre, object p_ultimaejecucion, object p_actualizadohasta, object p_rangodesde, object p_rangohasta) 
+        public void add(object p_id, object p_description, object p_nombre, object p_ultimaejecucion, object p_actualizadohasta, object p_rangodesde, object p_rangohasta , object p_tiempo) 
         {
             this.id = p_id;
             this.description = p_description;
@@ -27,7 +28,7 @@ namespace ComValue
             this.actualizadohasta = p_actualizadohasta;
             this.rangodesde = p_rangodesde;
             this.rangohasta = p_rangohasta;
-
+            this.tiempo = p_tiempo;
         }
    
     }

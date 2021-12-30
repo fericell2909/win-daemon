@@ -14,34 +14,59 @@ namespace ComAcceso
         private string cRutaCSV = String.Empty;
         private string proceso = String.Empty;
         private ComAcceso.Records oRecords;
-        public CsvExport(string proceso){
+        public CsvExport(string proceso, ref string ruta){
             cRutaCSV = System.Configuration.ConfigurationManager.AppSettings["ruta_csv"];
             this.proceso = proceso;
             this.oRecords = new ComAcceso.Records();
-            this.generateCSV();
+            string ruta_csv = string.Empty;
+            this.generateCSV(ref ruta_csv);
+            ruta = ruta_csv;
         }
-        private Boolean generateCSV()
+        private Boolean generateCSV(ref string ruta_csv)
         {
             Boolean bresult = false;
+            string ruta = string.Empty;
 
-            if (this.proceso == "ingreso_pam")
-                this.ingreso_pam();
+            if (this.proceso == ComValue.Enum.ingreso_pam)
+            {
+                this.ingreso_pam(ref ruta);
+            }
+
+            if (this.proceso == ComValue.Enum.recaudacion)
+            {
+                this.recaudacion(ref ruta);
+            }
+            ruta_csv = ruta;
 
             return bresult;
         }
 
-        private void ingreso_pam()
+        private void ingreso_pam(ref string ruta)
         {
-
-            //DateTime dt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Ticks);
-            // string dt = DateTime.Now.ToLongDateString();
-            string name = DateTime.Now.ToString("yyyyMMddHHmmss") + "-ingreso_pam-u-" + Environment.UserName + ".csv";
 
             List<ComValue.IngresoPam> oListIngresoPam;
 
             oListIngresoPam = oRecords.GetIngresoPams("2021-01-02", "2021-01-03");
 
-            CreateCSV(oListIngresoPam, @""+this.cRutaCSV+""+name);
+            ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.recaudacion);
+
+            CreateCSV(oListIngresoPam, ruta);
+
+        }
+        private string getNameCSV(string tipo)
+        {
+            return DateTime.Now.ToString(ComValue.Enum.format_fecha_hora_csv) + "-" + tipo + "-u-" + Environment.UserName + ".csv";
+        }
+
+        private void recaudacion(ref string ruta)
+        {
+
+           List<ComValue.Recaudacion> oListRecaudacion;
+
+            oListRecaudacion = oRecords.GetRecaudacion("2021-12-29", "2021-12-29");
+            ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.recaudacion);
+
+            CreateCSV(oListRecaudacion, ruta);
 
         }
 

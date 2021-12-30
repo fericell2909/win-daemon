@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab_probar_conexion = new System.Windows.Forms.TabPage();
             this.txtLog = new System.Windows.Forms.TextBox();
-            this.btConectar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btConectar = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
             this.txtNombreServicio = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,15 +47,30 @@
             this.txtServidorOracle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tab_listado_procesos = new System.Windows.Forms.TabPage();
+            this.cmdlimpiarlog = new System.Windows.Forms.Button();
+            this.cmdlimpiarcsv = new System.Windows.Forms.Button();
+            this.lblrutalog = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblusuario = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblhora = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblfechainiciovalidacion = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblhorainiciovalidacion = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblConteo = new System.Windows.Forms.Label();
+            this.cmddetener = new System.Windows.Forms.Button();
+            this.cmdiniciar = new System.Windows.Forms.Button();
+            this.lblrutacsv = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lblModo = new System.Windows.Forms.Label();
             this.linklabel = new System.Windows.Forms.LinkLabel();
             this.lblModoCaption = new System.Windows.Forms.Label();
             this.lblAmbiente = new System.Windows.Forms.Label();
             this.lblcargando = new System.Windows.Forms.Label();
             this.dglistado = new System.Windows.Forms.DataGridView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblrutacsv = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ultimaeject = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,9 +79,14 @@
             this.rangohasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accion = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CSV = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.timerProcesoAutomatico = new System.Windows.Forms.Timer(this.components);
+            this.timerHora = new System.Windows.Forms.Timer(this.components);
             this.tab_probar_conexion.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tab_listado_procesos.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dglistado)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +98,7 @@
             this.tab_probar_conexion.Location = new System.Drawing.Point(4, 22);
             this.tab_probar_conexion.Name = "tab_probar_conexion";
             this.tab_probar_conexion.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_probar_conexion.Size = new System.Drawing.Size(870, 449);
+            this.tab_probar_conexion.Size = new System.Drawing.Size(984, 449);
             this.tab_probar_conexion.TabIndex = 2;
             this.tab_probar_conexion.Text = "Probar Conexion";
             this.tab_probar_conexion.UseVisualStyleBackColor = true;
@@ -93,17 +114,6 @@
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtLog.Size = new System.Drawing.Size(857, 216);
             this.txtLog.TabIndex = 2;
-            // 
-            // btConectar
-            // 
-            this.btConectar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btConectar.Location = new System.Drawing.Point(22, 170);
-            this.btConectar.Name = "btConectar";
-            this.btConectar.Size = new System.Drawing.Size(133, 23);
-            this.btConectar.TabIndex = 1;
-            this.btConectar.Text = "Probar Conexion";
-            this.btConectar.UseVisualStyleBackColor = true;
-            this.btConectar.Click += new System.EventHandler(this.btConectar_Click);
             // 
             // groupBox1
             // 
@@ -127,6 +137,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de conexión ";
+            // 
+            // btConectar
+            // 
+            this.btConectar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btConectar.Location = new System.Drawing.Point(22, 170);
+            this.btConectar.Name = "btConectar";
+            this.btConectar.Size = new System.Drawing.Size(133, 23);
+            this.btConectar.TabIndex = 1;
+            this.btConectar.Text = "Probar Conexion";
+            this.btConectar.UseVisualStyleBackColor = true;
+            this.btConectar.Click += new System.EventHandler(this.btConectar_Click);
             // 
             // btnClean
             // 
@@ -232,6 +253,15 @@
             // 
             // tab_listado_procesos
             // 
+            this.tab_listado_procesos.Controls.Add(this.cmdlimpiarlog);
+            this.tab_listado_procesos.Controls.Add(this.cmdlimpiarcsv);
+            this.tab_listado_procesos.Controls.Add(this.lblrutalog);
+            this.tab_listado_procesos.Controls.Add(this.label12);
+            this.tab_listado_procesos.Controls.Add(this.lblusuario);
+            this.tab_listado_procesos.Controls.Add(this.label10);
+            this.tab_listado_procesos.Controls.Add(this.lblhora);
+            this.tab_listado_procesos.Controls.Add(this.label7);
+            this.tab_listado_procesos.Controls.Add(this.groupBox2);
             this.tab_listado_procesos.Controls.Add(this.lblrutacsv);
             this.tab_listado_procesos.Controls.Add(this.label6);
             this.tab_listado_procesos.Controls.Add(this.lblModo);
@@ -243,10 +273,193 @@
             this.tab_listado_procesos.Location = new System.Drawing.Point(4, 22);
             this.tab_listado_procesos.Name = "tab_listado_procesos";
             this.tab_listado_procesos.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_listado_procesos.Size = new System.Drawing.Size(870, 449);
+            this.tab_listado_procesos.Size = new System.Drawing.Size(984, 449);
             this.tab_listado_procesos.TabIndex = 0;
             this.tab_listado_procesos.Text = "Listado de Procesos";
             this.tab_listado_procesos.UseVisualStyleBackColor = true;
+            // 
+            // cmdlimpiarlog
+            // 
+            this.cmdlimpiarlog.Location = new System.Drawing.Point(888, 234);
+            this.cmdlimpiarlog.Name = "cmdlimpiarlog";
+            this.cmdlimpiarlog.Size = new System.Drawing.Size(75, 23);
+            this.cmdlimpiarlog.TabIndex = 20;
+            this.cmdlimpiarlog.Text = "Limpiar Log";
+            this.cmdlimpiarlog.UseVisualStyleBackColor = true;
+            this.cmdlimpiarlog.Click += new System.EventHandler(this.cmdlimpiarlog_Click);
+            // 
+            // cmdlimpiarcsv
+            // 
+            this.cmdlimpiarcsv.Location = new System.Drawing.Point(7, 234);
+            this.cmdlimpiarcsv.Name = "cmdlimpiarcsv";
+            this.cmdlimpiarcsv.Size = new System.Drawing.Size(75, 23);
+            this.cmdlimpiarcsv.TabIndex = 19;
+            this.cmdlimpiarcsv.Text = "Limpiar CSV";
+            this.cmdlimpiarcsv.UseVisualStyleBackColor = true;
+            this.cmdlimpiarcsv.Click += new System.EventHandler(this.cmdlimpiarcsv_Click);
+            // 
+            // lblrutalog
+            // 
+            this.lblrutalog.AutoSize = true;
+            this.lblrutalog.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblrutalog.Location = new System.Drawing.Point(529, 28);
+            this.lblrutalog.Name = "lblrutalog";
+            this.lblrutalog.Size = new System.Drawing.Size(49, 13);
+            this.lblrutalog.TabIndex = 18;
+            this.lblrutalog.Text = "lblrutalog";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label12.Location = new System.Drawing.Point(416, 28);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 13);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "Ruta Log";
+            // 
+            // lblusuario
+            // 
+            this.lblusuario.AutoSize = true;
+            this.lblusuario.ForeColor = System.Drawing.Color.Gray;
+            this.lblusuario.Location = new System.Drawing.Point(802, 8);
+            this.lblusuario.Name = "lblusuario";
+            this.lblusuario.Size = new System.Drawing.Size(51, 13);
+            this.lblusuario.TabIndex = 16;
+            this.lblusuario.Text = "lblusuario";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label10.Location = new System.Drawing.Point(752, 8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(43, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Usuario";
+            // 
+            // lblhora
+            // 
+            this.lblhora.AutoSize = true;
+            this.lblhora.ForeColor = System.Drawing.Color.Gray;
+            this.lblhora.Location = new System.Drawing.Point(802, 28);
+            this.lblhora.Name = "lblhora";
+            this.lblhora.Size = new System.Drawing.Size(38, 13);
+            this.lblhora.TabIndex = 14;
+            this.lblhora.Text = "lblhora";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label7.Location = new System.Drawing.Point(756, 27);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Hora";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblfechainiciovalidacion);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.lblhorainiciovalidacion);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.lblConteo);
+            this.groupBox2.Controls.Add(this.cmddetener);
+            this.groupBox2.Controls.Add(this.cmdiniciar);
+            this.groupBox2.Location = new System.Drawing.Point(6, 263);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(957, 82);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Proceso Automatico";
+            // 
+            // lblfechainiciovalidacion
+            // 
+            this.lblfechainiciovalidacion.AutoSize = true;
+            this.lblfechainiciovalidacion.ForeColor = System.Drawing.Color.Gray;
+            this.lblfechainiciovalidacion.Location = new System.Drawing.Point(748, 16);
+            this.lblfechainiciovalidacion.Name = "lblfechainiciovalidacion";
+            this.lblfechainiciovalidacion.Size = new System.Drawing.Size(41, 13);
+            this.lblfechainiciovalidacion.TabIndex = 15;
+            this.lblfechainiciovalidacion.Text = "label10";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label9.Location = new System.Drawing.Point(604, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(117, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Fecha Inicio Validacion";
+            // 
+            // lblhorainiciovalidacion
+            // 
+            this.lblhorainiciovalidacion.AutoSize = true;
+            this.lblhorainiciovalidacion.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.lblhorainiciovalidacion.Location = new System.Drawing.Point(479, 16);
+            this.lblhorainiciovalidacion.Name = "lblhorainiciovalidacion";
+            this.lblhorainiciovalidacion.Size = new System.Drawing.Size(0, 13);
+            this.lblhorainiciovalidacion.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label8.Location = new System.Drawing.Point(345, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(110, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Hora Inicio Validacion";
+            // 
+            // lblConteo
+            // 
+            this.lblConteo.AutoSize = true;
+            this.lblConteo.Location = new System.Drawing.Point(272, 35);
+            this.lblConteo.Name = "lblConteo";
+            this.lblConteo.Size = new System.Drawing.Size(0, 13);
+            this.lblConteo.TabIndex = 2;
+            // 
+            // cmddetener
+            // 
+            this.cmddetener.Location = new System.Drawing.Point(129, 30);
+            this.cmddetener.Name = "cmddetener";
+            this.cmddetener.Size = new System.Drawing.Size(75, 23);
+            this.cmddetener.TabIndex = 1;
+            this.cmddetener.Text = "Detener";
+            this.cmddetener.UseVisualStyleBackColor = true;
+            this.cmddetener.Click += new System.EventHandler(this.cmddetener_Click);
+            // 
+            // cmdiniciar
+            // 
+            this.cmdiniciar.Location = new System.Drawing.Point(29, 30);
+            this.cmdiniciar.Name = "cmdiniciar";
+            this.cmdiniciar.Size = new System.Drawing.Size(75, 23);
+            this.cmdiniciar.TabIndex = 0;
+            this.cmdiniciar.Text = "Iniciar";
+            this.cmdiniciar.UseVisualStyleBackColor = true;
+            this.cmdiniciar.Click += new System.EventHandler(this.cmdiniciar_Click);
+            // 
+            // lblrutacsv
+            // 
+            this.lblrutacsv.AutoSize = true;
+            this.lblrutacsv.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblrutacsv.Location = new System.Drawing.Point(529, 8);
+            this.lblrutacsv.Name = "lblrutacsv";
+            this.lblrutacsv.Size = new System.Drawing.Size(52, 13);
+            this.lblrutacsv.TabIndex = 11;
+            this.lblrutacsv.Text = "lblrutacsv";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label6.Location = new System.Drawing.Point(416, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Ruta CSV";
             // 
             // lblModo
             // 
@@ -312,97 +525,79 @@
             this.rangodesde,
             this.rangohasta,
             this.accion,
-            this.CSV});
+            this.CSV,
+            this.Tiempo});
             this.dglistado.Location = new System.Drawing.Point(7, 44);
             this.dglistado.Name = "dglistado";
             this.dglistado.ReadOnly = true;
-            this.dglistado.Size = new System.Drawing.Size(857, 213);
+            this.dglistado.Size = new System.Drawing.Size(956, 213);
             this.dglistado.TabIndex = 4;
             this.dglistado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dglistado_CellContentClick);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tab_listado_procesos);
-            this.tabControl1.Controls.Add(this.tab_probar_conexion);
-            this.tabControl1.Location = new System.Drawing.Point(1, 1);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(878, 475);
-            this.tabControl1.TabIndex = 4;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label6.Location = new System.Drawing.Point(416, 8);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Ruta CSV";
-            // 
-            // lblrutacsv
-            // 
-            this.lblrutacsv.AutoSize = true;
-            this.lblrutacsv.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblrutacsv.Location = new System.Drawing.Point(485, 8);
-            this.lblrutacsv.Name = "lblrutacsv";
-            this.lblrutacsv.Size = new System.Drawing.Size(52, 13);
-            this.lblrutacsv.TabIndex = 11;
-            this.lblrutacsv.Text = "lblrutacsv";
-            // 
             // id
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.id.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.id.DefaultCellStyle = dataGridViewCellStyle1;
             this.id.Frozen = true;
             this.id.HeaderText = "#";
             this.id.Name = "id";
             this.id.ReadOnly = true;
+            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.id.Width = 30;
             // 
             // nombre
             // 
+            this.nombre.FillWeight = 90F;
             this.nombre.HeaderText = "Nombre";
             this.nombre.Name = "nombre";
             this.nombre.ReadOnly = true;
-            this.nombre.Width = 135;
+            this.nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.nombre.Width = 150;
             // 
             // ultimaeject
             // 
+            this.ultimaeject.FillWeight = 75F;
             this.ultimaeject.HeaderText = "Ultima Ejecucion";
             this.ultimaeject.Name = "ultimaeject";
             this.ultimaeject.ReadOnly = true;
-            this.ultimaeject.Width = 110;
+            this.ultimaeject.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ultimaeject.Width = 80;
             // 
             // actualizadohasta
             // 
+            this.actualizadohasta.FillWeight = 75F;
             this.actualizadohasta.HeaderText = "Actualizado hasta";
             this.actualizadohasta.Name = "actualizadohasta";
             this.actualizadohasta.ReadOnly = true;
-            this.actualizadohasta.Width = 110;
+            this.actualizadohasta.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.actualizadohasta.Width = 80;
             // 
             // rangodesde
             // 
+            this.rangodesde.FillWeight = 75F;
             this.rangodesde.HeaderText = "Rango Desde";
             this.rangodesde.Name = "rangodesde";
             this.rangodesde.ReadOnly = true;
-            this.rangodesde.Width = 110;
+            this.rangodesde.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.rangodesde.Width = 80;
             // 
             // rangohasta
             // 
+            this.rangohasta.FillWeight = 75F;
             this.rangohasta.HeaderText = "Rango Hasta";
             this.rangohasta.Name = "rangohasta";
             this.rangohasta.ReadOnly = true;
-            this.rangohasta.Width = 110;
+            this.rangohasta.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.rangohasta.Width = 80;
             // 
             // accion
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            this.accion.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.accion.DefaultCellStyle = dataGridViewCellStyle2;
             this.accion.HeaderText = "Accion";
             this.accion.Name = "accion";
             this.accion.ReadOnly = true;
@@ -417,11 +612,41 @@
             this.CSV.Text = "Generar CSV";
             this.CSV.UseColumnTextForButtonValue = true;
             // 
+            // Tiempo
+            // 
+            this.Tiempo.FillWeight = 135F;
+            this.Tiempo.HeaderText = "Tiempo";
+            this.Tiempo.Name = "Tiempo";
+            this.Tiempo.ReadOnly = true;
+            this.Tiempo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Tiempo.Width = 195;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tab_listado_procesos);
+            this.tabControl1.Controls.Add(this.tab_probar_conexion);
+            this.tabControl1.Location = new System.Drawing.Point(1, 1);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(992, 475);
+            this.tabControl1.TabIndex = 4;
+            // 
+            // timerProcesoAutomatico
+            // 
+            this.timerProcesoAutomatico.Interval = 1000;
+            this.timerProcesoAutomatico.Tick += new System.EventHandler(this.timerProcesoAutomatico_Tick);
+            // 
+            // timerHora
+            // 
+            this.timerHora.Enabled = true;
+            this.timerHora.Interval = 1000;
+            this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick);
+            // 
             // formMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 472);
+            this.ClientSize = new System.Drawing.Size(990, 472);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -429,6 +654,7 @@
             this.Name = "formMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proceso Automaticos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMenuPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.formMenuPrincipal_Load);
             this.tab_probar_conexion.ResumeLayout(false);
             this.tab_probar_conexion.PerformLayout();
@@ -436,6 +662,8 @@
             this.groupBox1.PerformLayout();
             this.tab_listado_procesos.ResumeLayout(false);
             this.tab_listado_procesos.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dglistado)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -469,6 +697,22 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Label lblrutacsv;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Timer timerProcesoAutomatico;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button cmddetener;
+        private System.Windows.Forms.Button cmdiniciar;
+        private System.Windows.Forms.Label lblConteo;
+        private System.Windows.Forms.Timer timerHora;
+        private System.Windows.Forms.Label lblhora;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblhorainiciovalidacion;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblfechainiciovalidacion;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblusuario;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblrutalog;
+        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn ultimaeject;
@@ -477,6 +721,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn rangohasta;
         private System.Windows.Forms.DataGridViewButtonColumn accion;
         private System.Windows.Forms.DataGridViewButtonColumn CSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
+        private System.Windows.Forms.Button cmdlimpiarlog;
+        private System.Windows.Forms.Button cmdlimpiarcsv;
     }
 }
 

@@ -54,6 +54,14 @@ namespace ComAcceso
 
             return json;
         }
+        public void sendToIntranet(string filename, string url )
+        {
+
+            HttpClient httpClient = new HttpClient();
+
+
+        }
+
 
     }
 }

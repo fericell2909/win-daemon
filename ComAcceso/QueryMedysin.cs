@@ -90,5 +90,130 @@ namespace ComAcceso
             return query;
 
         }
+    
+        public string recaudacion(string desde , string hasta)
+        {
+            string f_desde = desde;
+            string f_hasta = hasta;
+
+            string query;
+
+            query = @"SELECT 
+                cdt.id_ingreso Admision_Rol_Clinica,
+                ccp2.PAM_NUMERO NUMERO_PAM,
+                gp.rut_prof PROFESIONAL_RUT_PROFESIONAL,
+                cdt.COD_PRESTACION PRESTACION,
+                ccp2.ROL_PROF Accion_Intervencion,
+                FORMA.COD_FORMAPAGO COD_FORMA_PAGO,
+                PAG.COD_ISAPRE ISAPRE_CODIGO_ISAPRE,
+                cdt.ID_TRANSACCION ID_TRANSACCION,
+                cdt.ID_PROCESO ID_PROCESO,
+                cdt.ID_DETALLE ID_DETALLE,
+                PAG.ID_PAGO ID_PAGO,
+                TO_CHAR(TRAN.FECHA_TRANSACCION, 'YYYY-MM-DD')    FECHA_RECAUDACION,
+                ff.rut_cliente || '-' || ff.dv_cliente   RUT_CLIENTE,
+                cpp.total_pres MONTO_RECAUDACION,
+                CASE WHEN PAG.NUM_DOCUMENTO IS NOT NULL THEN CASE WHEN PAG.NUM_DOCUMENTO LIKE '%-%' THEN SUBSTR(REPLACE(PAG.NUM_DOCUMENTO, '-',''), 1, LENGTH(PAG.NUM_DOCUMENTO) - 1) ELSE PAG.NUM_DOCUMENTO END ELSE '0' END NUMERO_DOCUMENTO,
+                ff.numero_factura NUMERO_FACTURA,
+                TO_CHAR(ff.fecha_factura, 'YYYY-MM-DD')       FECHA_FACTURA,
+                TRAN.ID_USUARIO USUARIO_CAJA,
+                ff.ID_USUARIO USUARIO_FACTURA,
+                ff.OBS_FACTURA OBSERVACION,
+                '' EMPRESA_TRIBUTARIA
+            FROM   fac_factura ff,
+                fac_pagosfactura fpf,
+                cja_det_transaccion cdt,
+                cja_prestacion_pago cpp,
+                gen_profesional gp,
+                CJA_PAGOS PAG,
+                CJA_TRANSACCION TRAN,
+                CJA_FORMA_DE_PAGO FORMA,
+                CTA_Consumos_Prestacion ccp2
+            WHERE
+              ff.cod_empresa = 2
+              AND ff.cod_facempre IN(4, 9)
+              And ff.tipodoc_factura Not In('C', 'D')
+              AND ff.FECHA_FACTURA >= TO_DATE(" + "'" + $"{f_desde}" + "'" + @", 'YYYY-MM-DD')
+              AND ff.FECHA_FACTURA <= TO_DATE(" + "'" + $"{f_hasta}" + "'" + @", 'YYYY-MM-DD')
+              AND fpf.cod_empresa = ff.cod_empresa
+              AND fpf.numero_factura = ff.numero_factura
+              AND fpf.tipodoc_factura = ff.tipodoc_factura
+              AND fpf.cod_facempre = ff.cod_facempre
+              AND cdt.cod_empresa = fpf.cod_empresa
+              AND cdt.id_proceso = fpf.correl_proceso
+              AND cdt.id_transaccion = fpf.id_transaccion
+              AND cdt.id_detalle = fpf.id_detalle
+              AND gp.cod_empresa = cdt.cod_empresa
+              AND gp.cod_prof = cdt.cod_prof
+              AND cpp.cod_empresa = cdt.cod_empresa
+              AND cpp.id_proceso = cdt.id_proceso
+              AND cpp.id_transaccion = cdt.id_transaccion
+              AND cpp.id_detalle = cdt.id_detalle
+              AND cpp.ID_PAGO = fpf.ID_PAGO
+              AND cpp.ID_PAGO = PAG.ID_PAGO
+              AND PAG.COD_EMPRESA = TRAN.COD_EMPRESA
+              AND PAG.COD_SUCURSAL = TRAN.COD_SUCURSAL
+              AND PAG.ID_TRANSACCION = TRAN.ID_TRANSACCION
+              AND PAG.ID_PROCESO = TRAN.ID_PROCESO
+              AND TRAN.ESTADO <> 'ANU'
+              AND FORMA.COD_EMPRESA = PAG.COD_EMPRESA
+              AND FORMA.COD_FORMAPAGO = PAG.COD_FORMAPAGO
+              AND ccp2.ID_CONSUMO = cdt.ID_CONSUMO
+
+              AND ccp2.PAM_NUMERO IS NOT NULL
+            Union all
+            SELECT
+            cdt.id_ingreso Admision_Rol_Clinica,
+            ccp2.PAM_NUMERO NUMERO_PAM,
+            gp.rut_prof PROFESIONAL_RUT_PROFESIONAL,
+            cdt.COD_PRESTACION PRESTACION,
+            ccp2.ROL_PROF Accion_Intervencion,
+            FORMA.COD_FORMAPAGO COD_FORMA_PAGO,
+            PAG.COD_ISAPRE ISAPRE_CODIGO_ISAPRE,
+            cdt.ID_TRANSACCION ID_TRANSACCION,
+            cdt.ID_PROCESO ID_PROCESO,
+            cdt.ID_DETALLE ID_DETALLE,
+            PAG.ID_PAGO ID_PAGO,
+            TO_CHAR(TRAN.FECHA_TRANSACCION, 'YYYY-MM-DD')    FECHA_RECAUDACION,
+            ''                  RUT_CLIENTE,
+            cpp.total_pres MONTO_RECAUDACION,
+            CASE WHEN PAG.NUM_DOCUMENTO IS NOT NULL THEN CASE WHEN PAG.NUM_DOCUMENTO LIKE '%-%' THEN SUBSTR(REPLACE(PAG.NUM_DOCUMENTO, '-',''), 1, LENGTH(PAG.NUM_DOCUMENTO) - 1) ELSE PAG.NUM_DOCUMENTO END ELSE '0' END NUMERO_DOCUMENTO,
+            0                     NUMERO_FACTURA,
+            TO_CHAR('', 'YYYY-MM-DD') FECHA_FACTURA,
+            TRAN.ID_USUARIO USUARIO_CAJA,
+            '' USUARIO_FACTURA,
+            '' OBSERVACION,
+            '' EMPRESA_TRIBUTARIA
+            FROM
+              cja_det_transaccion cdt,
+              cja_prestacion_pago cpp,
+              gen_profesional gp,
+              CJA_PAGOS PAG,
+              CJA_TRANSACCION TRAN,
+              CJA_FORMA_DE_PAGO FORMA,
+              CTA_Consumos_Prestacion ccp2
+            WHERE
+                TO_CHAR(TRAN.FECHA_TRANSACCION, 'YYYY-MM-DD') >= " + "'" + $"{f_desde}" + "'" +
+                "And TO_CHAR(TRAN.FECHA_TRANSACCION,  'YYYY-MM-DD') <= " + "'" + $"{f_hasta}" + "'" +
+                @"AND gp.cod_empresa = cdt.cod_empresa 
+                AND gp.cod_prof = cdt.cod_prof
+                AND cpp.cod_empresa = cdt.cod_empresa
+                AND cpp.id_proceso = cdt.id_proceso
+                AND cpp.id_transaccion = cdt.id_transaccion
+                AND cpp.id_detalle = cdt.id_detalle
+                AND cpp.ID_PAGO = PAG.ID_PAGO
+                AND PAG.COD_EMPRESA = TRAN.COD_EMPRESA
+                AND PAG.COD_SUCURSAL = TRAN.COD_SUCURSAL
+                AND PAG.ID_TRANSACCION = TRAN.ID_TRANSACCION
+                AND PAG.ID_PROCESO = TRAN.ID_PROCESO
+                AND TRAN.ESTADO <> 'ANU'
+                AND FORMA.COD_EMPRESA = PAG.COD_EMPRESA
+                AND FORMA.COD_FORMAPAGO = PAG.COD_FORMAPAGO
+                AND ccp2.ID_CONSUMO = cdt.ID_CONSUMO
+                AND FORMA.COD_FORMAPAGO IN(12,13,144)
+				AND ccp2.PAM_NUMERO IS NOT NULL";
+
+            return query;
+        }
     }
 }

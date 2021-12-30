@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum.cs" />
     <Compile Include="GridProceso.cs" />
     <Compile Include="IngresoPam.cs" />
     <Compile Include="ManejadorLogs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recaudacion.cs" />
     <Compile Include="StringProcesos.cs" />
     <Compile Include="Ultimaejecucion.cs" />
   </ItemGroup>

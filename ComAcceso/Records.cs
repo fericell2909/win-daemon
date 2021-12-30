@@ -34,11 +34,16 @@ namespace ComAcceso
 
         private void setStringProcesos()
         {
-            this.s_ingreso_pam = "ingreso_pam";
 
-            ComValue.StringProcesos objStrAuxProceso = new ComValue.StringProcesos("1", this.s_ingreso_pam, "Ingreso flujo PAM");
+            ComValue.StringProcesos objStrAuxProceso = new ComValue.StringProcesos("1", ComValue.Enum.ingreso_pam, "Ingreso flujo PAM","L-M-M-J-V a las 07:30 am y 15:00 pm");
 
+            ComValue.StringProcesos objStrAuxProceso2 = new ComValue.StringProcesos("2", ComValue.Enum.recaudacion, "Recaudacion", "L-M-M-J-V a las 07:30 am");
+
+            objStringProcesos.Add(objStrAuxProceso2);
             objStringProcesos.Add(objStrAuxProceso);
+
+            objStrAuxProceso2 = null;
+            objStrAuxProceso = null;
 
         }
         public List<ComValue.IngresoPam> GetIngresoPams(string d_ini , string d_end) {
@@ -119,16 +124,60 @@ namespace ComAcceso
 
                 DateTime fechaIngActualizado =    fechaIng.Subtract(TimeSpan.FromDays(1));
                
-                // DateTime fechaIngActualizado = DateTime.ParseExact(fechaIng.Subtract(TimeSpan.FromDays(1)).ToString(), "d-m-Y", null);
-                  //fechaIngActualizado = 
                 DateTime hastaIng = DateTime.Today.Subtract(TimeSpan.FromDays(1));
                
-               ogrid.add(obj.id, obj.description, obj.description, fechaIng.ToString().Substring(0,10), fechaIngActualizado.ToString().Substring(0, 10), fechaIng.ToString().Substring(0, 10), hastaIng.ToString().Substring(0, 10));
+               ogrid.add(obj.id, obj.description, obj.description, fechaIng.ToString().Substring(0,10), fechaIngActualizado.ToString().Substring(0, 10), fechaIng.ToString().Substring(0, 10), hastaIng.ToString().Substring(0, 10), obj.tiempo);
 
                 this.oListResultGridProceso.Add(ogrid);
                 }
 
         }
+
+
+        public List<ComValue.Recaudacion> GetRecaudacion(string d_ini, string d_end)
+        {
+
+            List<ComValue.Recaudacion> oListResult = new List<ComValue.Recaudacion>();
+            // d_ini : 2021-01-02
+            // d_end : 2021-01-03
+            try
+            {
+
+                objOraConnect.Open();
+
+                objComand = new OracleCommand(objQueryMedysin.recaudacion(d_ini, d_end), objOraConnect);
+                //objComand = new OracleCommand("select ccp.* from cta_consumos_prestacion ccp where rownum= 1", objOraConnect);
+
+                objComand.CommandType = System.Data.CommandType.Text;
+                objDataReader = objComand.ExecuteReader();
+
+                while (objDataReader.Read())
+                {
+                    ComValue.Recaudacion oClsRecaudacion = new ComValue.Recaudacion();
+
+                    oClsRecaudacion.Agregar(
+                        objDataReader.GetValue(0), objDataReader.GetValue(1), objDataReader.GetValue(2), objDataReader.GetValue(3), objDataReader.GetValue(4), objDataReader.GetValue(5), objDataReader.GetValue(6), objDataReader.GetValue(7), objDataReader.GetValue(8), objDataReader.GetValue(9), objDataReader.GetValue(10), objDataReader.GetValue(11), objDataReader.GetValue(12), objDataReader.GetValue(13), objDataReader.GetValue(14), objDataReader.GetValue(15), objDataReader.GetValue(16), objDataReader.GetValue(17), objDataReader.GetValue(18), objDataReader.GetValue(19), objDataReader.GetValue(20));
+
+                    oListResult.Add(oClsRecaudacion);
+                    oClsRecaudacion = null;
+                }
+
+
+            }
+
+            catch (Exception ex)
+            {
+                string e = ex.Message.ToString();
+                //nTipoResultado = oclsErrores.nErrorConexionBaseDatos;
+                //cTipoMensajeError = ex.Message.ToString() + " " + "PC_SP_VENTAS_GNV" + " " + ConfigurationManager.ConnectionStrings("cn").ConnectionString;
+                //oLogErroresRutaLocal.CreateLogFiles();
+                //oLogErroresRutaLocal.ErrorLog(cRutaLog, ex.Message.ToString() + " " + "PC_SP_VENTAS_GNV" + " " + ConfigurationManager.ConnectionStrings("cn").ConnectionString + " " + ex.StackTrace);
+            }
+
+
+            return oListResult;
+        }
+
     }
 
 }
