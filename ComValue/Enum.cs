@@ -27,11 +27,35 @@ namespace ComValue
 
         public const string mensaje_csv_ok = "CSV Generado Correctamente.";
         public const string titulo_mensaje = "Atencion, Aviso Importante...";
+        public const string mensaje_eject_ok = "Proceso Enviado a INTRANET Correctamente.";
 
         public const string format_hora = "hh:mm:ss tt";
         public const string format_fecha = "dd/MM/yyyy";
+        public const string fomat_fecha_proceso = "yyyy-MM-dd";
 
         public const string format_fecha_hora_csv = "yyyyMMddHHmmss";
+
+        public const string mensaje_cargando_grilla = "Cargando Listado - Procesos Automaticos. . .";
+
+        public const string method_post = "POST";
+        public const string method_type_multipar_data = "multipart/form-data";
+
+        public const string contenttype_json = "application/json; charset=utf-8";
+
+        public const string log_inicio_csv = "Inicio CSV --> ";
+        public const string log_ruta_csv = "Ruta CSV --> ";
+        public const string log_termino_csv = "Terminado CSV --> ";
+
+
+        public const string log_inicio_eject = "Inicio EJECUTAR --> ";
+        public const string log_termino_eject = "Terminado EJECUTAR --> ";
+
+
+        public const string log_fecha_inicio = "Fecha Inicio : ";
+        public const string log_fecha_termino = "Fecha Termino : ";
+
+        public const string log_numero_records = "Numero de Registros Encontrados : ";
+
 
     }
 }

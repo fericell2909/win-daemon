@@ -16,7 +16,8 @@ namespace ComAcceso
         private OracleDataReader objDataReader;
         private OracleCommand objComand;
         private List<ComValue.StringProcesos> objStringProcesos;
-
+        private ComValue.ManejadorLogs oLogErrores = new ComValue.ManejadorLogs();
+        private string cRutaLog = String.Empty;
         List<ComValue.GridProceso> oListResultGridProceso;
 
         private string s_ingreso_pam;
@@ -28,6 +29,8 @@ namespace ComAcceso
             objQueryMedysin = new QueryMedysin();
             oListResultGridProceso = new List<ComValue.GridProceso>();
             objStringProcesos = new List<ComValue.StringProcesos>();
+            cRutaLog = System.Configuration.ConfigurationManager.AppSettings["ruta_log"];
+
             this.setStringProcesos();
             
         }
@@ -49,16 +52,17 @@ namespace ComAcceso
         public List<ComValue.IngresoPam> GetIngresoPams(string d_ini , string d_end) {
             
             List<ComValue.IngresoPam> oListResult = new List<ComValue.IngresoPam>();
-            // d_ini : 2021-01-02
-            // d_end : 2021-01-03
+
+            oLogErrores.CreateLogFiles();
+            oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_fecha_inicio + d_ini + " " + ComValue.Enum.log_fecha_termino + d_end + " " + ComValue.Enum.ingreso_pam);
+
             try
             {
 
                 objOraConnect.Open();
 
                 objComand = new OracleCommand(objQueryMedysin.ingreso_pam(d_ini, d_end), objOraConnect);
-                //objComand = new OracleCommand("select ccp.* from cta_consumos_prestacion ccp where rownum= 1", objOraConnect);
-                
+ 
                 objComand.CommandType = System.Data.CommandType.Text;
                 objDataReader = objComand.ExecuteReader();
 
@@ -73,16 +77,16 @@ namespace ComAcceso
                     oClsIngresoPam = null;
                 }
 
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_numero_records + oListResult.Count.ToString() + ComValue.Enum.recaudacion);
+
 
             }
 
             catch (Exception ex)
             {
-                string e = ex.Message.ToString();
-                //nTipoResultado = oclsErrores.nErrorConexionBaseDatos;
-                //cTipoMensajeError = ex.Message.ToString() + " " + "PC_SP_VENTAS_GNV" + " " + ConfigurationManager.ConnectionStrings("cn").ConnectionString;
-                //oLogErroresRutaLocal.CreateLogFiles();
-                //oLogErroresRutaLocal.ErrorLog(cRutaLog, ex.Message.ToString() + " " + "PC_SP_VENTAS_GNV" + " " + ConfigurationManager.ConnectionStrings("cn").ConnectionString + " " + ex.StackTrace);
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ex.Message.ToString() + ex.StackTrace);
             }
 
 
@@ -102,11 +106,33 @@ namespace ComAcceso
         {
 
             string result = String.Empty;
-            HttpClient httpClient = new HttpClient();
 
-            result = httpClient.LeerWS("", "GET", "last_proc?nombre=" + proceso);
-            ComValue.Ultimaejecucion fechaejec = JsonConvert.DeserializeObject<ComValue.Ultimaejecucion>(result);
-            result = fechaejec.ultima_ejecucion;
+            try 
+            {
+
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, "GET last_proc ? nombre = " + proceso);
+
+                HttpClient httpClient = new HttpClient();
+
+                result = httpClient.LeerWS("", "GET", "last_proc?nombre=" + proceso);
+                if(result != "")
+                {
+                    ComValue.Ultimaejecucion fechaejec = JsonConvert.DeserializeObject<ComValue.Ultimaejecucion>(result);
+                    result = fechaejec.ultima_ejecucion;
+                } else
+                {
+                    result = "";
+                }
+                
+            }
+            catch (Exception ex) //bloque catch para captura de error
+            {
+                result = "";
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ex.Message.ToString() + ex.StackTrace);
+            }
+
             
             return result;
 
@@ -118,17 +144,29 @@ namespace ComAcceso
             
                foreach(ComValue.StringProcesos obj in this.objStringProcesos)
                 {
-                    ComValue.GridProceso ogrid = new ComValue.GridProceso();
+                    try
+                    {
+                        ComValue.GridProceso ogrid = new ComValue.GridProceso();
 
-                DateTime fechaIng =  Convert.ToDateTime(this.getUltimaFechaProceso(obj.nombre));
+                        DateTime fechaIng = Convert.ToDateTime(this.getUltimaFechaProceso(obj.nombre));
 
-                DateTime fechaIngActualizado =    fechaIng.Subtract(TimeSpan.FromDays(1));
-               
-                DateTime hastaIng = DateTime.Today.Subtract(TimeSpan.FromDays(1));
-               
-               ogrid.add(obj.id, obj.description, obj.description, fechaIng.ToString().Substring(0,10), fechaIngActualizado.ToString().Substring(0, 10), fechaIng.ToString().Substring(0, 10), hastaIng.ToString().Substring(0, 10), obj.tiempo);
+                        DateTime fechaIngActualizado = fechaIng.Subtract(TimeSpan.FromDays(1));
 
-                this.oListResultGridProceso.Add(ogrid);
+                        DateTime hastaIng = DateTime.Today.Subtract(TimeSpan.FromDays(1));
+
+                        ogrid.add(obj.id, obj.description, obj.description, fechaIng.ToString().Substring(0, 10), fechaIngActualizado.ToString().Substring(0, 10), fechaIng.ToString().Substring(0, 10), hastaIng.ToString().Substring(0, 10), obj.tiempo);
+
+                        this.oListResultGridProceso.Add(ogrid);
+                
+                    } catch(Exception ex)
+                    {
+
+                        oLogErrores.CreateLogFiles();
+                        oLogErrores.ErrorLog(cRutaLog, ex.Message.ToString() + ex.StackTrace);
+
+                    }
+
+                
                 }
 
         }
@@ -138,16 +176,16 @@ namespace ComAcceso
         {
 
             List<ComValue.Recaudacion> oListResult = new List<ComValue.Recaudacion>();
-            // d_ini : 2021-01-02
-            // d_end : 2021-01-03
+
+            oLogErrores.CreateLogFiles();
+            oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_fecha_inicio + d_ini + " " + ComValue.Enum.log_fecha_termino + d_end + " " + ComValue.Enum.recaudacion);
+
             try
             {
 
                 objOraConnect.Open();
 
                 objComand = new OracleCommand(objQueryMedysin.recaudacion(d_ini, d_end), objOraConnect);
-                //objComand = new OracleCommand("select ccp.* from cta_consumos_prestacion ccp where rownum= 1", objOraConnect);
-
                 objComand.CommandType = System.Data.CommandType.Text;
                 objDataReader = objComand.ExecuteReader();
 
@@ -162,22 +200,43 @@ namespace ComAcceso
                     oClsRecaudacion = null;
                 }
 
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_numero_records + oListResult.Count.ToString() + ComValue.Enum.recaudacion);
 
             }
 
             catch (Exception ex)
             {
-                string e = ex.Message.ToString();
-                //nTipoResultado = oclsErrores.nErrorConexionBaseDatos;
-                //cTipoMensajeError = ex.Message.ToString() + " " + "PC_SP_VENTAS_GNV" + " " + ConfigurationManager.ConnectionStrings("cn").ConnectionString;
-                //oLogErroresRutaLocal.CreateLogFiles();
-                //oLogErroresRutaLocal.ErrorLog(cRutaLog, ex.Message.ToString() + " " + "PC_SP_VENTAS_GNV" + " " + ConfigurationManager.ConnectionStrings("cn").ConnectionString + " " + ex.StackTrace);
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ex.Message.ToString() +  ex.StackTrace);
             }
 
 
             return oListResult;
         }
 
+        public void LastRangoFechaEjecucion( string proceso , ref string d_ini, ref string d_last)
+        {
+
+            string aux_date = this.getUltimaFechaProceso(proceso);
+
+            if( aux_date != "")
+            {
+                if(proceso != ComValue.Enum.ingreso_pam)
+                {
+
+                    d_ini = aux_date;
+                    d_last = DateTime.Today.Subtract(TimeSpan.FromDays(1)).ToString(ComValue.Enum.fomat_fecha_proceso);
+                
+                }
+                
+            }
+
+        }
+
+
     }
+
+    
 
 }

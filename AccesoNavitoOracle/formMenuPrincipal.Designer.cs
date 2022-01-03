@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab_probar_conexion = new System.Windows.Forms.TabPage();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -83,6 +83,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.timerProcesoAutomatico = new System.Windows.Forms.Timer(this.components);
             this.timerHora = new System.Windows.Forms.Timer(this.components);
+            this.cmdrecargar = new System.Windows.Forms.Button();
             this.tab_probar_conexion.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tab_listado_procesos.SuspendLayout();
@@ -253,6 +254,7 @@
             // 
             // tab_listado_procesos
             // 
+            this.tab_listado_procesos.Controls.Add(this.cmdrecargar);
             this.tab_listado_procesos.Controls.Add(this.cmdlimpiarlog);
             this.tab_listado_procesos.Controls.Add(this.cmdlimpiarcsv);
             this.tab_listado_procesos.Controls.Add(this.lblrutalog);
@@ -536,8 +538,8 @@
             // 
             // id
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.id.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.id.DefaultCellStyle = dataGridViewCellStyle3;
             this.id.Frozen = true;
             this.id.HeaderText = "#";
             this.id.Name = "id";
@@ -592,12 +594,12 @@
             // 
             // accion
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.accion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.accion.DefaultCellStyle = dataGridViewCellStyle4;
             this.accion.HeaderText = "Accion";
             this.accion.Name = "accion";
             this.accion.ReadOnly = true;
@@ -642,6 +644,16 @@
             this.timerHora.Interval = 1000;
             this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick);
             // 
+            // cmdrecargar
+            // 
+            this.cmdrecargar.Location = new System.Drawing.Point(419, 234);
+            this.cmdrecargar.Name = "cmdrecargar";
+            this.cmdrecargar.Size = new System.Drawing.Size(75, 23);
+            this.cmdrecargar.TabIndex = 21;
+            this.cmdrecargar.Text = "Recargar";
+            this.cmdrecargar.UseVisualStyleBackColor = true;
+            this.cmdrecargar.Click += new System.EventHandler(this.cmdrecargar_Click);
+            // 
             // formMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -653,7 +665,7 @@
             this.MinimizeBox = false;
             this.Name = "formMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Proceso Automaticos";
+            this.Text = "Procesos Automaticos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMenuPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.formMenuPrincipal_Load);
             this.tab_probar_conexion.ResumeLayout(false);
@@ -724,6 +736,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
         private System.Windows.Forms.Button cmdlimpiarlog;
         private System.Windows.Forms.Button cmdlimpiarcsv;
+        private System.Windows.Forms.Button cmdrecargar;
     }
 }
 

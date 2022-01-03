@@ -18,8 +18,10 @@ namespace AccesoNavitoOracle
     public partial class formMenuPrincipal : Form
     {
         private int production;
+        private string cRutaLog = String.Empty;
         private int conteo;
         private Boolean InicioTimer;
+        private ComValue.ManejadorLogs oLogErrores = new ComValue.ManejadorLogs();
 
         public formMenuPrincipal()
         {
@@ -47,11 +49,18 @@ namespace AccesoNavitoOracle
 
             this.Shown += new EventHandler(formMenuPrincipal_Shown);
             this.lblusuario.Text = Environment.UserName;
+            cRutaLog = System.Configuration.ConfigurationManager.AppSettings["ruta_log"];
         }
 
         private void CargarGrilla()
         {
 
+
+            this.lblcargando.Text = ComValue.Enum.mensaje_cargando_grilla;
+            //this.lblcargando.Visible = true;
+            this.dglistado.Visible = false;
+            this.dglistado.Rows.Clear();
+            
             ComAcceso.ProcesosAutomaticos oAcceso = new ComAcceso.ProcesosAutomaticos();
             List<ComValue.GridProceso> oListGridProceso = new List<ComValue.GridProceso>();
             oListGridProceso = oAcceso.List_Procesos_Automaticos();
@@ -68,6 +77,12 @@ namespace AccesoNavitoOracle
             
             }
             this.dglistado.Sort(this.dglistado.Columns["id"], ListSortDirection.Ascending);
+
+            this.lblcargando.Text = "";
+            lblcargando.Visible = false;
+            this.dglistado.Visible = true;
+
+
         }
 
         private void btnClean_Click(object sender, EventArgs e)
@@ -124,10 +139,28 @@ namespace AccesoNavitoOracle
 
 
             }
+            // eject
+            if (dglistado.CurrentCell.ColumnIndex.Equals(6))
+            {
+
+                if (Convert.ToInt32(dglistado.CurrentRow.Index + 1) == 1)
+                {
+
+                    this.eject_process(ComValue.Enum.ingreso_pam, ComValue.Enum.csv_ingreso_pam,1);
+                }
+
+                if (Convert.ToInt32(dglistado.CurrentRow.Index + 1) == 2)
+                {
+
+                    this.eject_process(ComValue.Enum.recaudacion, ComValue.Enum.csv_recaudacion,1);
+
+                }
+
+               
+            }
 
 
-            
-        }
+            }
 
         private void generate_csv_export(string tipo, string mensaje)
         {
@@ -139,6 +172,8 @@ namespace AccesoNavitoOracle
                 this.lblcargando.Visible = true;
                 this.lblcargando.Text = mensaje;
                 string ruta_csv_generada = String.Empty;
+
+                ///
 
                 ComAcceso.CsvExport o = new ComAcceso.CsvExport(tipo,ref ruta_csv_generada);
                 this.dglistado.Visible = true;
@@ -156,8 +191,10 @@ namespace AccesoNavitoOracle
 
         }
 
-        private void eject_process(string tipo , string mensaje)
+
+        private void eject_process(string tipo , string mensaje , int view_message = 0)
         {
+            object result = null;
 
             try //boque try con todas las operaciones
             {
@@ -165,20 +202,38 @@ namespace AccesoNavitoOracle
                 this.lblcargando.Visible = true;
                 this.lblcargando.Text = mensaje;
 
-                ComAcceso.Eject o = new ComAcceso.Eject(tipo);
+                ComAcceso.Eject o = new ComAcceso.Eject();
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_inicio_eject + tipo);
+
+                result = o.sendTointranet(tipo);
+
+                this.CargarGrilla();
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_termino_eject + tipo);
+
+
                 this.dglistado.Visible = true;
                 this.lblcargando.Text = "";
                 this.lblcargando.Visible = false;
 
-                MessageBox.Show(ComValue.Enum.mensaje_csv_ok, ComValue.Enum.titulo_mensaje);
+                if(view_message == 1)
+                {
 
+                    MessageBox.Show(ComValue.Enum.mensaje_eject_ok, ComValue.Enum.titulo_mensaje);
+                
+                }
+                
             }
             catch (Exception ex) //bloque catch para captura de error
             {
-                MessageBox.Show("Ha Ocurrido un Error " + ex.ToString(), ComValue.Enum.titulo_mensaje, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (view_message == 1)
+                {
+                 
+                    MessageBox.Show("Ha Ocurrido un Error " + ex.ToString(), ComValue.Enum.titulo_mensaje, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                } 
             }
-
-
 
 
         }
@@ -305,6 +360,11 @@ namespace AccesoNavitoOracle
         private void cmdlimpiarlog_Click(object sender, EventArgs e)
         {
             this.cleanFiles(this.lblrutalog.Text, "Borrado de Archivos  de Logs exitoso.");
+        }
+
+        private void cmdrecargar_Click(object sender, EventArgs e)
+        {
+            this.CargarGrilla();
         }
     }
 }

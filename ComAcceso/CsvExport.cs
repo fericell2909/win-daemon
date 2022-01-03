@@ -12,14 +12,29 @@ namespace ComAcceso
      public class CsvExport
     {
         private string cRutaCSV = String.Empty;
+        private string cRutaLog = String.Empty;
         private string proceso = String.Empty;
         private ComAcceso.Records oRecords;
+
+        private ComValue.ManejadorLogs oLogErrores  = new ComValue.ManejadorLogs();
+
         public CsvExport(string proceso, ref string ruta){
+            
             cRutaCSV = System.Configuration.ConfigurationManager.AppSettings["ruta_csv"];
+            cRutaLog = System.Configuration.ConfigurationManager.AppSettings["ruta_log"];
             this.proceso = proceso;
             this.oRecords = new ComAcceso.Records();
             string ruta_csv = string.Empty;
+
+            oLogErrores.CreateLogFiles();
+            oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_inicio_csv + proceso);
+            
             this.generateCSV(ref ruta_csv);
+
+            oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_ruta_csv +  ruta_csv);
+            oLogErrores.CreateLogFiles();
+            oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_termino_csv + proceso);
+
             ruta = ruta_csv;
         }
         private Boolean generateCSV(ref string ruta_csv)
@@ -61,15 +76,19 @@ namespace ComAcceso
         private void recaudacion(ref string ruta)
         {
 
-           List<ComValue.Recaudacion> oListRecaudacion;
+            List<ComValue.Recaudacion> oListRecaudacion;
+            string d_ini = "";
+            string d_last = "";
 
-            oListRecaudacion = oRecords.GetRecaudacion("2021-12-29", "2021-12-29");
+            oRecords.LastRangoFechaEjecucion(ComValue.Enum.recaudacion, ref d_ini, ref d_last);
+            oListRecaudacion = oRecords.GetRecaudacion(d_ini, d_last);
             ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.recaudacion);
 
             CreateCSV(oListRecaudacion, ruta);
 
         }
 
+        
         public void WriteCSV<T>(IEnumerable<T> items, string path)
         {
             Type itemType = typeof(T);

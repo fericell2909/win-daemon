@@ -33,3 +33,5 @@ F:\Repositorios\amsmprocesosautomaticos\AccesoNavitoOracle\obj\Release\AccesoNav
 F:\Repositorios\amsmprocesosautomaticos\AccesoNavitoOracle\obj\Release\WinManual.csproj.CopyComplete
 F:\Repositorios\amsmprocesosautomaticos\AccesoNavitoOracle\obj\Release\AccesoNavitoOracle.exe
 F:\Repositorios\amsmprocesosautomaticos\AccesoNavitoOracle\obj\Release\AccesoNavitoOracle.pdb
+F:\Repositorios\amsmprocesosautomaticos\AccesoNavitoOracle\bin\Release\RestSharp.dll
+F:\Repositorios\amsmprocesosautomaticos\AccesoNavitoOracle\bin\Release\RestSharp.xml

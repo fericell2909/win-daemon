@@ -19,3 +19,5 @@ F:\Repositorios\amsmprocesosautomaticos\ComAcceso\bin\Release\Newtonsoft.Json.xm
 F:\Repositorios\amsmprocesosautomaticos\ComAcceso\obj\Release\ComAcceso.csproj.CopyComplete
 F:\Repositorios\amsmprocesosautomaticos\ComAcceso\obj\Release\ComAcceso.dll
 F:\Repositorios\amsmprocesosautomaticos\ComAcceso\obj\Release\ComAcceso.pdb
+F:\Repositorios\amsmprocesosautomaticos\ComAcceso\bin\Release\RestSharp.dll
+F:\Repositorios\amsmprocesosautomaticos\ComAcceso\bin\Release\RestSharp.xml
