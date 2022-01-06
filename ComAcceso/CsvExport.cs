@@ -51,6 +51,12 @@ namespace ComAcceso
             {
                 this.recaudacion(ref ruta);
             }
+
+            if (this.proceso == ComValue.Enum.envio_isapre)
+            {
+                this.envio_isapre(ref ruta);
+            }
+
             ruta_csv = ruta;
 
             return bresult;
@@ -88,7 +94,21 @@ namespace ComAcceso
 
         }
 
-        
+        private void envio_isapre(ref string ruta)
+        {
+
+            List<ComValue.EnvioIsapre> oListEnvioIsapre;
+            string d_ini = "";
+            string d_last = "";
+
+            oRecords.LastRangoFechaEjecucion(ComValue.Enum.envio_isapre, ref d_ini, ref d_last);
+            oListEnvioIsapre = oRecords.GetEnvioIsapre(d_ini, d_last);
+            ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.envio_isapre);
+
+            CreateCSV(oListEnvioIsapre, ruta);
+
+        }
+
         public void WriteCSV<T>(IEnumerable<T> items, string path)
         {
             Type itemType = typeof(T);

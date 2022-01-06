@@ -16,6 +16,7 @@ namespace ComAcceso
         private string urlWS;
         private string url_ingreso_pam_post;
         private string url_recaudacion_post;
+        private string url_envio_isapre_post;
         private string result_send_recaudacion_post;
         private string cRutaLog = String.Empty;
         private ComValue.ManejadorLogs oLogErrores = new ComValue.ManejadorLogs();
@@ -35,7 +36,7 @@ namespace ComAcceso
 
             this.url_ingreso_pam_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_ingreso_pam"];
             this.url_recaudacion_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_recaudacion"];
-
+            this.url_envio_isapre_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_envio_isapre"];
             cRutaLog = System.Configuration.ConfigurationManager.AppSettings["ruta_log"];
 
 
@@ -137,6 +138,11 @@ namespace ComAcceso
             if (tipo == ComValue.Enum.recaudacion)
             {
                 url = this.url_recaudacion_post;
+            }
+
+            if (tipo == ComValue.Enum.envio_isapre)
+            {
+                url = this.url_envio_isapre_post;
             }
 
             try 

@@ -42,11 +42,16 @@ namespace ComAcceso
 
             ComValue.StringProcesos objStrAuxProceso2 = new ComValue.StringProcesos("2", ComValue.Enum.recaudacion, "Recaudacion", "L-M-M-J-V a las 07:30 am");
 
+            ComValue.StringProcesos objStrAuxProceso3 = new ComValue.StringProcesos("3", ComValue.Enum.envio_isapre, "Envio a isapre", "L-M-M-J-V a las 07:30 am");
+
+
             objStringProcesos.Add(objStrAuxProceso2);
             objStringProcesos.Add(objStrAuxProceso);
+            objStringProcesos.Add(objStrAuxProceso3);
 
             objStrAuxProceso2 = null;
             objStrAuxProceso = null;
+            objStrAuxProceso3 = null;
 
         }
         public List<ComValue.IngresoPam> GetIngresoPams(string d_ini , string d_end) {
@@ -214,6 +219,50 @@ namespace ComAcceso
 
             return oListResult;
         }
+
+        public List<ComValue.EnvioIsapre> GetEnvioIsapre(string d_ini, string d_end)
+        {
+
+            List<ComValue.EnvioIsapre> oListResult = new List<ComValue.EnvioIsapre>();
+
+            oLogErrores.CreateLogFiles();
+            oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_fecha_inicio + d_ini + " " + ComValue.Enum.log_fecha_termino + d_end + " " + ComValue.Enum.envio_isapre);
+
+            try
+            {
+
+                objOraConnect.Open();
+
+                objComand = new OracleCommand(objQueryMedysin.envio_isapre(d_ini, d_end), objOraConnect);
+                objComand.CommandType = System.Data.CommandType.Text;
+                objDataReader = objComand.ExecuteReader();
+
+                while (objDataReader.Read())
+                {
+                    ComValue.EnvioIsapre oClsEnvioIsapre = new ComValue.EnvioIsapre();
+
+                    oClsEnvioIsapre.Agregar(
+                        objDataReader.GetValue(0), objDataReader.GetValue(1), objDataReader.GetValue(2));
+
+                    oListResult.Add(oClsEnvioIsapre);
+                    oClsEnvioIsapre = null;
+                }
+
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_numero_records + oListResult.Count.ToString() + ComValue.Enum.envio_isapre);
+
+            }
+
+            catch (Exception ex)
+            {
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ex.Message.ToString() + ex.StackTrace);
+            }
+
+
+            return oListResult;
+        }
+
 
         public void LastRangoFechaEjecucion( string proceso , ref string d_ini, ref string d_last)
         {

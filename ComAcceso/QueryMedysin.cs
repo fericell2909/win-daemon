@@ -215,5 +215,27 @@ namespace ComAcceso
 
             return query;
         }
+
+
+        public string envio_isapre(string desde, string hasta)
+        {
+            string f_desde = desde;
+            string f_hasta = hasta;
+
+            string query;
+
+            query = @"Select a.Id_Ingreso,a.PAM_Numero,TO_CHAR(Max(b.FECHA_ENVIO_ISAPRE), 'YYYY-MM-DD') AS FECHA_ENVIO_ISAPRE
+                       From Cta_Consumos_Prestacion a,
+                       Cta_Liquidacion b
+                       Where a.Id_Liquidacion = b.Id_Liquidacion
+                       And a.Cod_Empresa = 2
+                       And to_Char(b.FECHA_ENVIO_ISAPRE, 'YYYY-MM-DD') >= " + "'" + $"{f_desde}" + "'" +
+                       "and to_char(b.FECHA_ENVIO_ISAPRE, 'YYYY-MM-DD') <= "+ "'" + $"{f_hasta}" + "'" +
+                       @"Group by a.Id_Ingreso, a.PAM_Numero,b.FECHA_ENVIO_ISAPRE";
+
+            return query;
+
+        }
+
     }
 }
