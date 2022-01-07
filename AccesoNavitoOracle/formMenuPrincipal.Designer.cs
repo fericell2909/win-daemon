@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab_probar_conexion = new System.Windows.Forms.TabPage();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -47,6 +47,10 @@
             this.txtServidorOracle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tab_listado_procesos = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.cmdrecargar = new System.Windows.Forms.Button();
             this.cmdlimpiarlog = new System.Windows.Forms.Button();
             this.cmdlimpiarcsv = new System.Windows.Forms.Button();
@@ -84,10 +88,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.timerProcesoAutomatico = new System.Windows.Forms.Timer(this.components);
             this.timerHora = new System.Windows.Forms.Timer(this.components);
-            this.label11 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblvalidacion = new System.Windows.Forms.Label();
             this.tab_probar_conexion.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tab_listado_procesos.SuspendLayout();
@@ -288,6 +289,50 @@
             this.tab_listado_procesos.Text = "Listado de Procesos";
             this.tab_listado_procesos.UseVisualStyleBackColor = true;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label15.Location = new System.Drawing.Point(537, 357);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(332, 13);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "Enviar el csv generado a la intranet y actualizar la fechas de proceso";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label14.Location = new System.Drawing.Point(105, 357);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(357, 13);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Obtiene los datos de MEDISYN y guarda en un archivo con extension csv";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label13.Location = new System.Drawing.Point(485, 357);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "Ejecutar";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label11.Location = new System.Drawing.Point(13, 357);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(69, 13);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Generar CSV";
+            // 
             // cmdrecargar
             // 
             this.cmdrecargar.Location = new System.Drawing.Point(419, 234);
@@ -380,6 +425,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblvalidacion);
             this.groupBox2.Controls.Add(this.lblfechainiciovalidacion);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.lblhorainiciovalidacion);
@@ -557,8 +603,8 @@
             // 
             // id
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.id.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.id.DefaultCellStyle = dataGridViewCellStyle3;
             this.id.Frozen = true;
             this.id.HeaderText = "#";
             this.id.Name = "id";
@@ -613,12 +659,12 @@
             // 
             // accion
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.accion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.accion.DefaultCellStyle = dataGridViewCellStyle4;
             this.accion.HeaderText = "Accion";
             this.accion.Name = "accion";
             this.accion.ReadOnly = true;
@@ -654,6 +700,7 @@
             // 
             // timerProcesoAutomatico
             // 
+            this.timerProcesoAutomatico.Enabled = true;
             this.timerProcesoAutomatico.Interval = 1000;
             this.timerProcesoAutomatico.Tick += new System.EventHandler(this.timerProcesoAutomatico_Tick);
             // 
@@ -663,49 +710,14 @@
             this.timerHora.Interval = 1000;
             this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick);
             // 
-            // label11
+            // lblvalidacion
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label11.Location = new System.Drawing.Point(13, 357);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 13);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "Generar CSV";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label13.Location = new System.Drawing.Point(485, 357);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 13);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "Ejecutar";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label14.Location = new System.Drawing.Point(105, 357);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(357, 13);
-            this.label14.TabIndex = 24;
-            this.label14.Text = "Obtiene los datos de MEDISYN y guarda en un archivo con extension csv";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label15.Location = new System.Drawing.Point(537, 357);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(332, 13);
-            this.label15.TabIndex = 25;
-            this.label15.Text = "Enviar el csv generado a la intranet y actualizar la fechas de proceso";
+            this.lblvalidacion.AutoSize = true;
+            this.lblvalidacion.Location = new System.Drawing.Point(345, 40);
+            this.lblvalidacion.Name = "lblvalidacion";
+            this.lblvalidacion.Size = new System.Drawing.Size(65, 13);
+            this.lblvalidacion.TabIndex = 18;
+            this.lblvalidacion.Text = "lblvalidacion";
             // 
             // formMenuPrincipal
             // 
@@ -794,6 +806,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblvalidacion;
     }
 }
 

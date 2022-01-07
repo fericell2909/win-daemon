@@ -58,6 +58,9 @@ namespace ComValue
 
         public const string log_numero_records = "Numero de Registros Encontrados : ";
 
+        public const int hora_proceso = 7;
+        public const int hora_second_time_proceso = 15;
+
 
     }
 }

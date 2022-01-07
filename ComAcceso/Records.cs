@@ -264,21 +264,33 @@ namespace ComAcceso
         }
 
 
-        public void LastRangoFechaEjecucion( string proceso , ref string d_ini, ref string d_last)
+        public void LastRangoFechaEjecucion( string proceso , ref string d_ini, ref string d_last, int second = 0)
         {
 
             string aux_date = this.getUltimaFechaProceso(proceso);
 
             if( aux_date != "")
             {
-                if(proceso != ComValue.Enum.ingreso_pam)
-                {
+                //if(proceso != ComValue.Enum.ingreso_pam)
+                //{
 
+                if(second == 0)
+                {
                     d_ini = aux_date;
                     d_last = DateTime.Today.Subtract(TimeSpan.FromDays(1)).ToString(ComValue.Enum.fomat_fecha_proceso);
-                
+
                 }
-                
+
+                if(second == 1)
+                {
+
+                    d_ini = DateTime.Today.Subtract(TimeSpan.FromDays(1)).ToString(ComValue.Enum.fomat_fecha_proceso);
+                    d_last = DateTime.Today.Subtract(TimeSpan.FromDays(1)).ToString(ComValue.Enum.fomat_fecha_proceso);
+
+                }
+
+                //}
+
             }
 
         }

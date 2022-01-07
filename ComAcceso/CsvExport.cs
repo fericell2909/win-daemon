@@ -18,7 +18,7 @@ namespace ComAcceso
 
         private ComValue.ManejadorLogs oLogErrores  = new ComValue.ManejadorLogs();
 
-        public CsvExport(string proceso, ref string ruta){
+        public CsvExport(string proceso, ref string ruta , int second = 0){
             
             cRutaCSV = System.Configuration.ConfigurationManager.AppSettings["ruta_csv"];
             cRutaLog = System.Configuration.ConfigurationManager.AppSettings["ruta_log"];
@@ -29,7 +29,7 @@ namespace ComAcceso
             oLogErrores.CreateLogFiles();
             oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_inicio_csv + proceso);
             
-            this.generateCSV(ref ruta_csv);
+            this.generateCSV(ref ruta_csv, second);
 
             oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_ruta_csv +  ruta_csv);
             oLogErrores.CreateLogFiles();
@@ -37,24 +37,24 @@ namespace ComAcceso
 
             ruta = ruta_csv;
         }
-        private Boolean generateCSV(ref string ruta_csv)
+        private Boolean generateCSV(ref string ruta_csv , int second = 0)
         {
             Boolean bresult = false;
             string ruta = string.Empty;
 
             if (this.proceso == ComValue.Enum.ingreso_pam)
             {
-                this.ingreso_pam(ref ruta);
+                this.ingreso_pam(ref ruta,second);
             }
 
             if (this.proceso == ComValue.Enum.recaudacion)
             {
-                this.recaudacion(ref ruta);
+                this.recaudacion(ref ruta, second);
             }
 
             if (this.proceso == ComValue.Enum.envio_isapre)
             {
-                this.envio_isapre(ref ruta);
+                this.envio_isapre(ref ruta, second);
             }
 
             ruta_csv = ruta;
@@ -62,14 +62,19 @@ namespace ComAcceso
             return bresult;
         }
 
-        private void ingreso_pam(ref string ruta)
+        private void ingreso_pam(ref string ruta, int second = 0)
         {
+
+            string d_ini = "";
+            string d_last = "";
+
+            oRecords.LastRangoFechaEjecucion(ComValue.Enum.ingreso_pam, ref d_ini, ref d_last, second);
 
             List<ComValue.IngresoPam> oListIngresoPam;
 
-            oListIngresoPam = oRecords.GetIngresoPams("2021-01-02", "2021-01-03");
+            oListIngresoPam = oRecords.GetIngresoPams(d_ini, d_last);
 
-            ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.recaudacion);
+            ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.ingreso_pam);
 
             CreateCSV(oListIngresoPam, ruta);
 
@@ -79,14 +84,14 @@ namespace ComAcceso
             return DateTime.Now.ToString(ComValue.Enum.format_fecha_hora_csv) + "-" + tipo + "-u-" + Environment.UserName + ".csv";
         }
 
-        private void recaudacion(ref string ruta)
+        private void recaudacion(ref string ruta, int second = 0)
         {
 
             List<ComValue.Recaudacion> oListRecaudacion;
             string d_ini = "";
             string d_last = "";
 
-            oRecords.LastRangoFechaEjecucion(ComValue.Enum.recaudacion, ref d_ini, ref d_last);
+            oRecords.LastRangoFechaEjecucion(ComValue.Enum.recaudacion, ref d_ini, ref d_last,second);
             oListRecaudacion = oRecords.GetRecaudacion(d_ini, d_last);
             ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.recaudacion);
 
@@ -94,14 +99,14 @@ namespace ComAcceso
 
         }
 
-        private void envio_isapre(ref string ruta)
+        private void envio_isapre(ref string ruta, int second = 0)
         {
 
             List<ComValue.EnvioIsapre> oListEnvioIsapre;
             string d_ini = "";
             string d_last = "";
 
-            oRecords.LastRangoFechaEjecucion(ComValue.Enum.envio_isapre, ref d_ini, ref d_last);
+            oRecords.LastRangoFechaEjecucion(ComValue.Enum.envio_isapre, ref d_ini, ref d_last,second);
             oListEnvioIsapre = oRecords.GetEnvioIsapre(d_ini, d_last);
             ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.envio_isapre);
 

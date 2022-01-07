@@ -50,6 +50,8 @@ namespace AccesoNavitoOracle
             this.Shown += new EventHandler(formMenuPrincipal_Shown);
             this.lblusuario.Text = Environment.UserName;
             cRutaLog = System.Configuration.ConfigurationManager.AppSettings["ruta_log"];
+
+            this.lblvalidacion.Text = "Timer cada " + timerProcesoAutomatico.Interval.ToString() + " segundos.";
         }
 
         private void CargarGrilla()
@@ -152,20 +154,20 @@ namespace AccesoNavitoOracle
                 if (Convert.ToInt32(dglistado.CurrentRow.Index + 1) == 1)
                 {
 
-                    this.eject_process(ComValue.Enum.ingreso_pam, ComValue.Enum.csv_ingreso_pam,1);
+                    this.eject_process(ComValue.Enum.ingreso_pam, ComValue.Enum.csv_ingreso_pam,1,1,0);
                 }
 
                 if (Convert.ToInt32(dglistado.CurrentRow.Index + 1) == 2)
                 {
 
-                    this.eject_process(ComValue.Enum.recaudacion, ComValue.Enum.csv_recaudacion,1);
+                    this.eject_process(ComValue.Enum.recaudacion, ComValue.Enum.csv_recaudacion, 1, 1, 0);
 
                 }
 
                 if (Convert.ToInt32(dglistado.CurrentRow.Index + 1) == 3)
                 {
 
-                    this.eject_process(ComValue.Enum.envio_isapre, ComValue.Enum.csv_envio_isapre, 1);
+                    this.eject_process(ComValue.Enum.envio_isapre, ComValue.Enum.csv_envio_isapre, 1, 1, 0);
 
                 }
 
@@ -205,7 +207,7 @@ namespace AccesoNavitoOracle
         }
 
 
-        private void eject_process(string tipo , string mensaje , int view_message = 0)
+        private void eject_process(string tipo , string mensaje , int view_message = 0 , int reload_grilla = 1 , int second = 0)
         {
             object result = null;
 
@@ -219,9 +221,14 @@ namespace AccesoNavitoOracle
                 oLogErrores.CreateLogFiles();
                 oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_inicio_eject + tipo);
 
-                result = o.sendTointranet(tipo);
+                result = o.sendTointranet(tipo, second);
 
-                this.CargarGrilla();
+                if(reload_grilla == 1)
+                {
+                    this.CargarGrilla();
+                }
+                
+
                 oLogErrores.CreateLogFiles();
                 oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_termino_eject + tipo);
 
@@ -297,11 +304,65 @@ namespace AccesoNavitoOracle
 
         private void timerProcesoAutomatico_Tick(object sender, EventArgs e)
         {
-            //conteo++;
-            //lblConteo.Text = conteo.ToString();
 
             // EJecutar Logica de procesos automaticos
+            int veces_ejecutar = 0;
+            int veces_ejecutar_second = 0;
 
+            if(DateTime.Now.DayOfWeek == DayOfWeek.Monday ||
+               DateTime.Now.DayOfWeek == DayOfWeek.Tuesday ||
+               DateTime.Now.DayOfWeek == DayOfWeek.Wednesday ||
+               DateTime.Now.DayOfWeek == DayOfWeek.Thursday ||
+               DateTime.Now.DayOfWeek == DayOfWeek.Friday
+               )
+            {
+
+                if(DateTime.Now.Hour == ComValue.Enum.hora_proceso ||
+                    DateTime.Now.Hour == ComValue.Enum.hora_second_time_proceso)
+                {
+                    // only execute one time
+                    if(DateTime.Now.Hour == ComValue.Enum.hora_proceso)
+                    {
+
+                        if (veces_ejecutar == 0) {
+                            this.eject_process(ComValue.Enum.ingreso_pam, ComValue.Enum.csv_ingreso_pam, 0, 0,0);
+                            this.eject_process(ComValue.Enum.recaudacion, ComValue.Enum.csv_recaudacion, 0, 0,0);
+                            this.eject_process(ComValue.Enum.envio_isapre, ComValue.Enum.csv_envio_isapre, 0, 0,0);
+
+                            this.CargarGrilla();
+                            veces_ejecutar = -1;
+                        }
+
+                        
+                    }
+
+                    if(DateTime.Now.Hour == ComValue.Enum.hora_second_time_proceso)
+                    {
+                            
+                        if(veces_ejecutar_second == 0)
+                        {
+
+                            this.eject_process(ComValue.Enum.ingreso_pam, ComValue.Enum.csv_ingreso_pam, 0, 0,1);
+                            this.CargarGrilla();
+                            veces_ejecutar_second = -1;
+
+                        }
+                    }
+                    
+
+                } else
+                {
+                    // To other day set the next variables.
+                    if(DateTime.Now.Hour ==  0)
+                    {
+                        veces_ejecutar = 0;
+                        veces_ejecutar_second = 0;
+                    }
+                }
+                
+
+                    
+            }
 
 
         }

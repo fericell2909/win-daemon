@@ -10,13 +10,13 @@ namespace ComAcceso
     public class Eject
     {
 
-        public object sendTointranet(string proceso)
+        public object sendTointranet(string proceso , int second = 0)
         {
 
             string ruta_csv = String.Empty;
             object result_proceso_post = null;
 
-            ComAcceso.CsvExport oExport = new ComAcceso.CsvExport(proceso, ref ruta_csv);
+            ComAcceso.CsvExport oExport = new ComAcceso.CsvExport(proceso, ref ruta_csv, second);
 
             if (ruta_csv != "")
             {
