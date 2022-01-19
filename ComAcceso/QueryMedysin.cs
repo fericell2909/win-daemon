@@ -264,7 +264,23 @@ namespace ComAcceso
                           and x.id_ingreso = ccp.id_ingreso
                           and x.tipo_consumo = ccp.tipo_consumo
                           and x.estado = 'ATE'
-                          AND x.PAM_NUMERO=ccp.PAM_NUMERO)  AND rownum <=10";
+                          AND x.PAM_NUMERO=ccp.PAM_NUMERO) ";
+
+            return query;
+
+        }
+
+        public string indicador_staff(string desde, string hasta)
+        {
+            string f_desde = desde;
+            string f_hasta = hasta;
+
+            string query;
+
+            query = @"SELECT rut_prof rut_profesional, IND_STAFF, Cod_Categoria_Comision categoria, IND_COMISION_FACT comision, VIGENCIA vigencia
+                      FROM gen_profesional 
+                      WHERE COD_EMPRESA = 2
+                      AND VIGENCIA = 'S' OR VIGENCIA = 'N' ";
 
             return query;
 

@@ -46,16 +46,21 @@ namespace ComAcceso
 
             ComValue.StringProcesos objStrAuxProceso4 = new ComValue.StringProcesos("4", ComValue.Enum.anulacion_pam, "Anulacion PAM", "L-M-M-J-V a las 07:30 am");
 
+            ComValue.StringProcesos objStrAuxProceso5 = new ComValue.StringProcesos("5", ComValue.Enum.indicador_staff, "Indicador STAFF", "L-M-M-J-V a las 07:30 am");
+            
+
             objStringProcesos.Add(objStrAuxProceso2);
             objStringProcesos.Add(objStrAuxProceso);
             objStringProcesos.Add(objStrAuxProceso3);
             objStringProcesos.Add(objStrAuxProceso4);
+            objStringProcesos.Add(objStrAuxProceso5);
+
 
             objStrAuxProceso2 = null;
             objStrAuxProceso = null;
             objStrAuxProceso3 = null;
             objStrAuxProceso4 = null;
-
+            objStrAuxProceso5 = null;
         }
         public List<ComValue.IngresoPam> GetIngresoPams(string d_ini , string d_end) {
             
@@ -342,6 +347,50 @@ namespace ComAcceso
             return oListResult;
         }
 
+
+        public List<ComValue.IndicadorStaff> GetIndicadorStaff(string d_ini, string d_end)
+        {
+
+            List<ComValue.IndicadorStaff> oListResult = new List<ComValue.IndicadorStaff>();
+
+            oLogErrores.CreateLogFiles();
+            oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_fecha_inicio + d_ini + " " + ComValue.Enum.log_fecha_termino + d_end + " " + ComValue.Enum.indicador_staff);
+
+            try
+            {
+
+                objOraConnect.Open();
+
+                objComand = new OracleCommand(objQueryMedysin.indicador_staff(d_ini, d_end), objOraConnect);
+                objComand.CommandType = System.Data.CommandType.Text;
+                objDataReader = objComand.ExecuteReader();
+
+                while (objDataReader.Read())
+                {
+                    ComValue.IndicadorStaff oClsIndicadorStaff = new ComValue.IndicadorStaff();
+
+                    oClsIndicadorStaff.Agregar(
+                        objDataReader.GetValue(0), objDataReader.GetValue(1), objDataReader.GetValue(2), objDataReader.GetValue(3), objDataReader.GetValue(4));
+
+                    oListResult.Add(oClsIndicadorStaff);
+                    oClsIndicadorStaff = null;
+
+                }
+
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_numero_records + oListResult.Count.ToString() + ComValue.Enum.indicador_staff);
+
+            }
+
+            catch (Exception ex)
+            {
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ex.Message.ToString() + ex.StackTrace);
+            }
+
+
+            return oListResult;
+        }
 
     }
 

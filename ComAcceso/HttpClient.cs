@@ -18,6 +18,8 @@ namespace ComAcceso
         private string url_recaudacion_post;
         private string url_envio_isapre_post;
         private string url_anulacion_pam_post;
+        private string url_indicador_staff_post;
+
         private string result_send_recaudacion_post;
         private string cRutaLog = String.Empty;
         private ComValue.ManejadorLogs oLogErrores = new ComValue.ManejadorLogs();
@@ -39,7 +41,8 @@ namespace ComAcceso
             this.url_recaudacion_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_recaudacion"];
             this.url_envio_isapre_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_envio_isapre"];
             this.url_anulacion_pam_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_anulacion_pam"];
-
+            this.url_indicador_staff_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_indicador_staff"];
+            
             cRutaLog = System.Configuration.ConfigurationManager.AppSettings["ruta_log"];
 
 
@@ -163,10 +166,15 @@ namespace ComAcceso
                 url = this.url_anulacion_pam_post;
             }
 
+            if (tipo == ComValue.Enum.indicador_staff)
+            {
+                url = this.url_indicador_staff_post;
+            }
+
             try 
             {
                 oLogErrores.CreateLogFiles();
-                oLogErrores.ErrorLog(cRutaLog, "Enviando EJECUTAR  --> CSV : " + ruta_csv  + " -->" + tipo);
+                oLogErrores.ErrorLog(cRutaLog, "Enviando EJECUTAR  --> CSV : " + ruta_csv  + " --> " + tipo + " --->" + url);
 
                 var client = new RestClient(url);
                 client.Timeout = -1;

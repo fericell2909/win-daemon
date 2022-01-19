@@ -6,6 +6,7 @@ namespace ComValue
     [Serializable()]
     public class EnvioIsapre
     {
+
         public object Id_Ingreso { get; set; }
         public object PAM_Numero { get; set; }
 

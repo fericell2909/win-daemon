@@ -62,6 +62,11 @@ namespace ComAcceso
                 this.anulacion_pam(ref ruta, second);
             }
 
+            if (this.proceso == ComValue.Enum.indicador_staff)
+            {
+                this.indicador_staff(ref ruta, second);
+            }
+
             ruta_csv = ruta;
 
             return bresult;
@@ -183,6 +188,20 @@ namespace ComAcceso
             ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.anulacion_pam);
 
             CreateCSV(oListAnulacionPam, ruta);
+
+        }
+        private void indicador_staff(ref string ruta, int second = 0)
+        {
+
+            List<ComValue.IndicadorStaff> oListIndicadorStaff;
+            string d_ini = "";
+            string d_last = "";
+
+            oRecords.LastRangoFechaEjecucion(ComValue.Enum.indicador_staff, ref d_ini, ref d_last, second);
+            oListIndicadorStaff = oRecords.GetIndicadorStaff(d_ini, d_last);
+            ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.indicador_staff);
+
+            CreateCSV(oListIndicadorStaff, ruta);
 
         }
 
