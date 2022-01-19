@@ -17,6 +17,7 @@ namespace ComAcceso
         private string url_ingreso_pam_post;
         private string url_recaudacion_post;
         private string url_envio_isapre_post;
+        private string url_anulacion_pam_post;
         private string result_send_recaudacion_post;
         private string cRutaLog = String.Empty;
         private ComValue.ManejadorLogs oLogErrores = new ComValue.ManejadorLogs();
@@ -37,6 +38,8 @@ namespace ComAcceso
             this.url_ingreso_pam_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_ingreso_pam"];
             this.url_recaudacion_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_recaudacion"];
             this.url_envio_isapre_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_envio_isapre"];
+            this.url_anulacion_pam_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_anulacion_pam"];
+
             cRutaLog = System.Configuration.ConfigurationManager.AppSettings["ruta_log"];
 
 
@@ -91,6 +94,16 @@ namespace ComAcceso
                 url = this.url_recaudacion_post;
             }
 
+            if(tipo == ComValue.Enum.envio_isapre)
+            {
+
+                url = this.url_envio_isapre_post;
+            }
+
+            if (tipo == ComValue.Enum.anulacion_pam)
+            {
+                url = this.url_anulacion_pam_post;
+            }
 
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.ContentType = ComValue.Enum.method_type_multipar_data;
@@ -143,6 +156,11 @@ namespace ComAcceso
             if (tipo == ComValue.Enum.envio_isapre)
             {
                 url = this.url_envio_isapre_post;
+            }
+
+            if (tipo == ComValue.Enum.anulacion_pam)
+            {
+                url = this.url_anulacion_pam_post;
             }
 
             try 

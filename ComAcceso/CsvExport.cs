@@ -57,6 +57,11 @@ namespace ComAcceso
                 this.envio_isapre(ref ruta, second);
             }
 
+            if (this.proceso == ComValue.Enum.anulacion_pam)
+            {
+                this.anulacion_pam(ref ruta, second);
+            }
+
             ruta_csv = ruta;
 
             return bresult;
@@ -164,6 +169,21 @@ namespace ComAcceso
                 CreateHeader(list, sw);
                 CreateRows(list, sw);
             }
+        }
+
+        private void anulacion_pam(ref string ruta, int second = 0)
+        {
+
+            List<ComValue.AnulacionPam> oListAnulacionPam;
+            string d_ini = "";
+            string d_last = "";
+
+            oRecords.LastRangoFechaEjecucion(ComValue.Enum.anulacion_pam, ref d_ini, ref d_last, second);
+            oListAnulacionPam = oRecords.GetAnulacionPam(d_ini, d_last);
+            ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.anulacion_pam);
+
+            CreateCSV(oListAnulacionPam, ruta);
+
         }
 
     }

@@ -237,5 +237,38 @@ namespace ComAcceso
 
         }
 
+        public string anulacion_pam(string desde, string hasta)
+        {
+            string f_desde = desde;
+            string f_hasta = hasta;
+
+            string query;
+
+            query = @"SELECT ccp.id_ingreso,
+                          ccp.pam_numero,
+                          ccp.programa_mod,
+                          ccp.resp_acceso,
+                          ' ' usuario,
+                          TO_CHAR(ccp.fecha_acceso,'YYYY-MM-DD') fecha_acceso
+                      FROM cta_consumos_prestacion ccp
+                      WHERE ccp.cod_empresa = 2
+                           and ccp.pam_numero is not null
+                           and ccp.estado          = 'ANU'
+                           and ccp.tipo_consumo    = 'HMQ'
+                       And to_Char(ccp.FECHA_ACCESO, 'YYYY-MM-DD') >= " + "'" + $"{f_desde}" + "'" +
+                       "and to_char(ccp.FECHA_ACCESO, 'YYYY-MM-DD') <= " + "'" + $"{f_hasta}" + "'" +
+                       @"AND NOT EXISTS
+                         (SELECT 'X'
+                          FROM CTA_CONSUMOS_PRESTACION x
+                          Where x.cod_empresa = ccp.cod_Empresa
+                          and x.id_ingreso = ccp.id_ingreso
+                          and x.tipo_consumo = ccp.tipo_consumo
+                          and x.estado = 'ATE'
+                          AND x.PAM_NUMERO=ccp.PAM_NUMERO)  AND rownum <=10";
+
+            return query;
+
+        }
+
     }
 }

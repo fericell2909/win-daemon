@@ -44,14 +44,17 @@ namespace ComAcceso
 
             ComValue.StringProcesos objStrAuxProceso3 = new ComValue.StringProcesos("3", ComValue.Enum.envio_isapre, "Envio a isapre", "L-M-M-J-V a las 07:30 am");
 
+            ComValue.StringProcesos objStrAuxProceso4 = new ComValue.StringProcesos("4", ComValue.Enum.anulacion_pam, "Anulacion PAM", "L-M-M-J-V a las 07:30 am");
 
             objStringProcesos.Add(objStrAuxProceso2);
             objStringProcesos.Add(objStrAuxProceso);
             objStringProcesos.Add(objStrAuxProceso3);
+            objStringProcesos.Add(objStrAuxProceso4);
 
             objStrAuxProceso2 = null;
             objStrAuxProceso = null;
             objStrAuxProceso3 = null;
+            objStrAuxProceso4 = null;
 
         }
         public List<ComValue.IngresoPam> GetIngresoPams(string d_ini , string d_end) {
@@ -293,6 +296,50 @@ namespace ComAcceso
 
             }
 
+        }
+
+
+        public List<ComValue.AnulacionPam> GetAnulacionPam(string d_ini, string d_end)
+        {
+
+            List<ComValue.AnulacionPam> oListResult = new List<ComValue.AnulacionPam>();
+
+            oLogErrores.CreateLogFiles();
+            oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_fecha_inicio + d_ini + " " + ComValue.Enum.log_fecha_termino + d_end + " " + ComValue.Enum.anulacion_pam);
+
+            try
+            {
+
+                objOraConnect.Open();
+
+                objComand = new OracleCommand(objQueryMedysin.anulacion_pam(d_ini, d_end), objOraConnect);
+                objComand.CommandType = System.Data.CommandType.Text;
+                objDataReader = objComand.ExecuteReader();
+
+                while (objDataReader.Read())
+                {
+                    ComValue.AnulacionPam oClsAnulacionPam = new ComValue.AnulacionPam();
+
+                    oClsAnulacionPam.Agregar(
+                        objDataReader.GetValue(0), objDataReader.GetValue(1), objDataReader.GetValue(2), objDataReader.GetValue(3), objDataReader.GetValue(4), objDataReader.GetValue(5));
+
+                    oListResult.Add(oClsAnulacionPam);
+                    oClsAnulacionPam = null;
+                }
+
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_numero_records + oListResult.Count.ToString() + ComValue.Enum.anulacion_pam);
+
+            }
+
+            catch (Exception ex)
+            {
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ex.Message.ToString() + ex.StackTrace);
+            }
+
+
+            return oListResult;
         }
 
 

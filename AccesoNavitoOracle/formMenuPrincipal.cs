@@ -145,6 +145,12 @@ namespace AccesoNavitoOracle
 
                 }
 
+                if (Convert.ToInt32(dglistado.CurrentRow.Index + 1) == 4)
+                {
+                    this.generate_csv_export(ComValue.Enum.anulacion_pam, ComValue.Enum.csv_anulacion_pam);
+
+                }
+
 
             }
             // eject
@@ -168,6 +174,13 @@ namespace AccesoNavitoOracle
                 {
 
                     this.eject_process(ComValue.Enum.envio_isapre, ComValue.Enum.csv_envio_isapre, 1, 1, 0);
+
+                }
+
+                if (Convert.ToInt32(dglistado.CurrentRow.Index + 1) == 4)
+                {
+
+                    this.eject_process(ComValue.Enum.anulacion_pam, ComValue.Enum.csv_anulacion_pam, 1, 1, 0);
 
                 }
 

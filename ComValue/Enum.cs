@@ -17,11 +17,12 @@ namespace ComValue
         public const string ingreso_pam = "ingreso_pam";
         public const string recaudacion = "recaudacion";
         public const string envio_isapre = "envio_isapre";
-
+        public const string anulacion_pam = "anulacion_pam";
 
         public const string csv_ingreso_pam = "Generando CSV - Ingreso Flujo PAM . . .";
         public const string csv_recaudacion = "Generando CSV - Recaudacion . . .";
         public const string csv_envio_isapre = "Generando CSV - Envio Isapre . . .";
+        public const string csv_anulacion_pam = "Generando CSV - Anulacion PAM . . .";
 
         public const string eject_ingreso_pam = "Ejecutando - Ingreso Flujo PAM . . .";
         public const string eject_recaudacion = "Ejecutando - Recaudacion . . .";
