@@ -157,6 +157,12 @@ namespace AccesoNavitoOracle
 
                 }
 
+                if (Convert.ToInt32(dglistado.CurrentRow.Index + 1) == 6)
+                {
+                    this.generate_csv_export(ComValue.Enum.indicador_sociedad, ComValue.Enum.csv_indicador_sociedad);
+
+                }
+
 
             }
             // eject
@@ -194,6 +200,13 @@ namespace AccesoNavitoOracle
                 {
 
                     this.eject_process(ComValue.Enum.indicador_staff, ComValue.Enum.csv_indicador_staff, 1, 1, 0);
+
+                }
+
+                if (Convert.ToInt32(dglistado.CurrentRow.Index + 1) == 6)
+                {
+
+                    this.eject_process(ComValue.Enum.indicador_sociedad, ComValue.Enum.csv_indicador_sociedad, 1, 1, 0);
 
                 }
 

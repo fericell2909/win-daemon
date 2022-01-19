@@ -286,5 +286,22 @@ namespace ComAcceso
 
         }
 
+        public string indicador_sociedad(string desde, string hasta)
+        {
+            string f_desde = desde;
+            string f_hasta = hasta;
+
+            string query;
+
+            query = @"SELECT rut_soc rut_sociedad, ind_retencion_exp 
+                      FROM par_sociedad 
+                      WHERE COD_EMPRESA = 2
+                      AND COD_SUCURSAL = 1
+                      AND VIGENCIA_SOC = 'S' ";
+
+            return query;
+
+        }
+
     }
 }

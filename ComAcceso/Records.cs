@@ -38,22 +38,24 @@ namespace ComAcceso
         private void setStringProcesos()
         {
 
-            ComValue.StringProcesos objStrAuxProceso = new ComValue.StringProcesos("1", ComValue.Enum.ingreso_pam, "Ingreso flujo PAM","L-M-M-J-V a las 07:30 am y 15:00 pm");
+            ComValue.StringProcesos objStrAuxProceso = new ComValue.StringProcesos("1", ComValue.Enum.ingreso_pam, "Ingreso flujo PAM",ComValue.Enum.lbl_horario_initial);
 
-            ComValue.StringProcesos objStrAuxProceso2 = new ComValue.StringProcesos("2", ComValue.Enum.recaudacion, "Recaudacion", "L-M-M-J-V a las 07:30 am");
+            ComValue.StringProcesos objStrAuxProceso2 = new ComValue.StringProcesos("2", ComValue.Enum.recaudacion, "Recaudacion", ComValue.Enum.lbl_horario_second_initial);
 
-            ComValue.StringProcesos objStrAuxProceso3 = new ComValue.StringProcesos("3", ComValue.Enum.envio_isapre, "Envio a isapre", "L-M-M-J-V a las 07:30 am");
+            ComValue.StringProcesos objStrAuxProceso3 = new ComValue.StringProcesos("3", ComValue.Enum.envio_isapre, "Envio a isapre", ComValue.Enum.lbl_horario_second_initial);
 
-            ComValue.StringProcesos objStrAuxProceso4 = new ComValue.StringProcesos("4", ComValue.Enum.anulacion_pam, "Anulacion PAM", "L-M-M-J-V a las 07:30 am");
+            ComValue.StringProcesos objStrAuxProceso4 = new ComValue.StringProcesos("4", ComValue.Enum.anulacion_pam, "Anulacion PAM", ComValue.Enum.lbl_horario_second_initial);
 
-            ComValue.StringProcesos objStrAuxProceso5 = new ComValue.StringProcesos("5", ComValue.Enum.indicador_staff, "Indicador STAFF", "L-M-M-J-V a las 07:30 am");
-            
+            ComValue.StringProcesos objStrAuxProceso5 = new ComValue.StringProcesos("5", ComValue.Enum.indicador_staff, "Indicador STAFF", ComValue.Enum.lbl_horario_second_initial);
+            ComValue.StringProcesos objStrAuxProceso6 = new ComValue.StringProcesos("6", ComValue.Enum.indicador_sociedad, "Indicador Sociedad", ComValue.Enum.lbl_horario_second_initial);
+
 
             objStringProcesos.Add(objStrAuxProceso2);
             objStringProcesos.Add(objStrAuxProceso);
             objStringProcesos.Add(objStrAuxProceso3);
             objStringProcesos.Add(objStrAuxProceso4);
             objStringProcesos.Add(objStrAuxProceso5);
+            objStringProcesos.Add(objStrAuxProceso6);
 
 
             objStrAuxProceso2 = null;
@@ -392,6 +394,50 @@ namespace ComAcceso
             return oListResult;
         }
 
+        public List<ComValue.IndicadorSociedad> GetIndicadorSociedad(string d_ini, string d_end)
+        {
+
+            List<ComValue.IndicadorSociedad> oListResult = new List<ComValue.IndicadorSociedad>();
+
+            oLogErrores.CreateLogFiles();
+            oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_fecha_inicio + d_ini + " " + ComValue.Enum.log_fecha_termino + d_end + " " + ComValue.Enum.indicador_sociedad);
+
+            try
+            {
+
+                objOraConnect.Open();
+
+                objComand = new OracleCommand(objQueryMedysin.indicador_sociedad(d_ini, d_end), objOraConnect);
+                objComand.CommandType = System.Data.CommandType.Text;
+                objDataReader = objComand.ExecuteReader();
+
+                while (objDataReader.Read())
+
+                {
+                    ComValue.IndicadorSociedad oClsIndicadorSsocidad = new ComValue.IndicadorSociedad();
+
+                    oClsIndicadorSsocidad.Agregar(
+                        objDataReader.GetValue(0), objDataReader.GetValue(1));
+
+                    oListResult.Add(oClsIndicadorSsocidad);
+                    oClsIndicadorSsocidad = null;
+
+                }
+
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_numero_records + oListResult.Count.ToString() + ComValue.Enum.indicador_sociedad);
+
+            }
+
+            catch (Exception ex)
+            {
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ex.Message.ToString() + ex.StackTrace);
+            }
+
+
+            return oListResult;
+        }
     }
 
     

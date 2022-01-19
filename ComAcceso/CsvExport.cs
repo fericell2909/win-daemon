@@ -67,6 +67,11 @@ namespace ComAcceso
                 this.indicador_staff(ref ruta, second);
             }
 
+            if (this.proceso == ComValue.Enum.indicador_sociedad)
+            {
+                this.indicador_sociedad(ref ruta, second);
+            }
+
             ruta_csv = ruta;
 
             return bresult;
@@ -202,6 +207,21 @@ namespace ComAcceso
             ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.indicador_staff);
 
             CreateCSV(oListIndicadorStaff, ruta);
+
+        }
+
+        private void indicador_sociedad(ref string ruta, int second = 0)
+        {
+
+            List<ComValue.IndicadorSociedad> oListIndicadorSociedad;
+            string d_ini = "";
+            string d_last = "";
+
+            oRecords.LastRangoFechaEjecucion(ComValue.Enum.indicador_sociedad, ref d_ini, ref d_last, second);
+            oListIndicadorSociedad = oRecords.GetIndicadorSociedad(d_ini, d_last);
+            ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.indicador_sociedad);
+
+            CreateCSV(oListIndicadorSociedad, ruta);
 
         }
 

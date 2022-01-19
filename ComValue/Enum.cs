@@ -19,7 +19,7 @@ namespace ComValue
         public const string envio_isapre = "envio_isapre";
         public const string anulacion_pam = "anulacion_pam";
         public const string indicador_staff = "indicador_staff";
-        
+        public const string indicador_sociedad = "indicador_sociedad";
 
 
         public const string csv_ingreso_pam = "Generando CSV - Ingreso Flujo PAM . . .";
@@ -27,6 +27,7 @@ namespace ComValue
         public const string csv_envio_isapre = "Generando CSV - Envio Isapre . . .";
         public const string csv_anulacion_pam = "Generando CSV - Anulacion PAM . . .";
         public const string csv_indicador_staff = "Generando CSV - Indicador STAFF . . .";
+        public const string csv_indicador_sociedad = "Generando CSV - Indicador Sociedad . . .";
 
 
         public const string eject_ingreso_pam = "Ejecutando - Ingreso Flujo PAM . . .";
@@ -34,6 +35,7 @@ namespace ComValue
         public const string eject_envio_isapre = "Ejecutando - Envio Isapre . . .";
         public const string eject_anulacion_pam = "Ejecutando - Anulacion PAM . . .";
         public const string eject_indicador_staff = "Ejecutando - Indicador STAFF . . .";
+        public const string eject_indicador_sociedad = "Ejecutando - Indicador Sociedad . . .";
 
         public const string mensaje_csv_ok = "CSV Generado Correctamente.";
         public const string titulo_mensaje = "Atencion, Aviso Importante...";
@@ -69,6 +71,8 @@ namespace ComValue
         public const int hora_proceso = 7;
         public const int hora_second_time_proceso = 15;
 
+        public const string lbl_horario_initial = "L-M-M-J-V a las 07:30 am y 15:00 pm";
+        public const string lbl_horario_second_initial = "L-M-M-J-V a las 07:30 am";
 
     }
 }

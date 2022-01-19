@@ -47,6 +47,7 @@
     <Compile Include="Enum.cs" />
     <Compile Include="EnvioIsapre.cs" />
     <Compile Include="GridProceso.cs" />
+    <Compile Include="IndicadorSociedad.cs" />
     <Compile Include="IndicadorStaff.cs" />
     <Compile Include="IngresoPam.cs" />
     <Compile Include="ManejadorLogs.cs" />

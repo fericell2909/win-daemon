@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab_probar_conexion = new System.Windows.Forms.TabPage();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -61,6 +61,7 @@
             this.lblhora = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblvalidacion = new System.Windows.Forms.Label();
             this.lblfechainiciovalidacion = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblhorainiciovalidacion = new System.Windows.Forms.Label();
@@ -88,7 +89,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.timerProcesoAutomatico = new System.Windows.Forms.Timer(this.components);
             this.timerHora = new System.Windows.Forms.Timer(this.components);
-            this.lblvalidacion = new System.Windows.Forms.Label();
             this.tab_probar_conexion.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tab_listado_procesos.SuspendLayout();
@@ -118,7 +118,7 @@
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLog.Size = new System.Drawing.Size(857, 216);
+            this.txtLog.Size = new System.Drawing.Size(853, 145);
             this.txtLog.TabIndex = 2;
             // 
             // groupBox1
@@ -441,6 +441,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Proceso Automatico";
             // 
+            // lblvalidacion
+            // 
+            this.lblvalidacion.AutoSize = true;
+            this.lblvalidacion.Location = new System.Drawing.Point(345, 40);
+            this.lblvalidacion.Name = "lblvalidacion";
+            this.lblvalidacion.Size = new System.Drawing.Size(65, 13);
+            this.lblvalidacion.TabIndex = 18;
+            this.lblvalidacion.Text = "lblvalidacion";
+            // 
             // lblfechainiciovalidacion
             // 
             this.lblfechainiciovalidacion.AutoSize = true;
@@ -603,8 +612,8 @@
             // 
             // id
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.id.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.id.DefaultCellStyle = dataGridViewCellStyle1;
             this.id.Frozen = true;
             this.id.HeaderText = "#";
             this.id.Name = "id";
@@ -659,12 +668,12 @@
             // 
             // accion
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.accion.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.accion.DefaultCellStyle = dataGridViewCellStyle2;
             this.accion.HeaderText = "Accion";
             this.accion.Name = "accion";
             this.accion.ReadOnly = true;
@@ -709,15 +718,6 @@
             this.timerHora.Enabled = true;
             this.timerHora.Interval = 1000;
             this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick);
-            // 
-            // lblvalidacion
-            // 
-            this.lblvalidacion.AutoSize = true;
-            this.lblvalidacion.Location = new System.Drawing.Point(345, 40);
-            this.lblvalidacion.Name = "lblvalidacion";
-            this.lblvalidacion.Size = new System.Drawing.Size(65, 13);
-            this.lblvalidacion.TabIndex = 18;
-            this.lblvalidacion.Text = "lblvalidacion";
             // 
             // formMenuPrincipal
             // 
