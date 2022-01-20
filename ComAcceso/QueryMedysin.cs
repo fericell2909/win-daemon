@@ -303,5 +303,22 @@ namespace ComAcceso
 
         }
 
+        public string motivo_no_cobranza(string desde , string hasta)
+        {
+
+
+            string f_desde = desde;
+            string f_hasta = hasta;
+
+            string query;
+
+            query = @"SELECT id_ingreso admision_rol_clinica, COD_MOTIVO_NO_COB motivo_no_cobranza
+                        FROM adm_ingresos
+                        WHERE IND_GEST_COB = 'N'";
+
+            return query;
+
+        }
+
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="IndicadorStaff.cs" />
     <Compile Include="IngresoPam.cs" />
     <Compile Include="ManejadorLogs.cs" />
+    <Compile Include="MotivonoCobranza.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recaudacion.cs" />
     <Compile Include="StringProcesos.cs" />

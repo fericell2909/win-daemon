@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab_probar_conexion = new System.Windows.Forms.TabPage();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -335,7 +335,7 @@
             // 
             // cmdrecargar
             // 
-            this.cmdrecargar.Location = new System.Drawing.Point(419, 234);
+            this.cmdrecargar.Location = new System.Drawing.Point(419, 254);
             this.cmdrecargar.Name = "cmdrecargar";
             this.cmdrecargar.Size = new System.Drawing.Size(75, 23);
             this.cmdrecargar.TabIndex = 21;
@@ -345,7 +345,7 @@
             // 
             // cmdlimpiarlog
             // 
-            this.cmdlimpiarlog.Location = new System.Drawing.Point(888, 234);
+            this.cmdlimpiarlog.Location = new System.Drawing.Point(888, 253);
             this.cmdlimpiarlog.Name = "cmdlimpiarlog";
             this.cmdlimpiarlog.Size = new System.Drawing.Size(75, 23);
             this.cmdlimpiarlog.TabIndex = 20;
@@ -355,7 +355,7 @@
             // 
             // cmdlimpiarcsv
             // 
-            this.cmdlimpiarcsv.Location = new System.Drawing.Point(7, 234);
+            this.cmdlimpiarcsv.Location = new System.Drawing.Point(7, 254);
             this.cmdlimpiarcsv.Name = "cmdlimpiarcsv";
             this.cmdlimpiarcsv.Size = new System.Drawing.Size(75, 23);
             this.cmdlimpiarcsv.TabIndex = 19;
@@ -434,9 +434,9 @@
             this.groupBox2.Controls.Add(this.cmddetener);
             this.groupBox2.Controls.Add(this.cmdiniciar);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(6, 263);
+            this.groupBox2.Location = new System.Drawing.Point(6, 284);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(957, 82);
+            this.groupBox2.Size = new System.Drawing.Size(957, 61);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Proceso Automatico";
@@ -606,14 +606,14 @@
             this.dglistado.Location = new System.Drawing.Point(7, 44);
             this.dglistado.Name = "dglistado";
             this.dglistado.ReadOnly = true;
-            this.dglistado.Size = new System.Drawing.Size(956, 213);
+            this.dglistado.Size = new System.Drawing.Size(956, 234);
             this.dglistado.TabIndex = 4;
             this.dglistado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dglistado_CellContentClick);
             // 
             // id
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.id.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.id.DefaultCellStyle = dataGridViewCellStyle3;
             this.id.Frozen = true;
             this.id.HeaderText = "#";
             this.id.Name = "id";
@@ -668,12 +668,12 @@
             // 
             // accion
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.accion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.accion.DefaultCellStyle = dataGridViewCellStyle4;
             this.accion.HeaderText = "Accion";
             this.accion.Name = "accion";
             this.accion.ReadOnly = true;

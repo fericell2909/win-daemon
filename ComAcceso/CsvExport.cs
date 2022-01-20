@@ -72,6 +72,11 @@ namespace ComAcceso
                 this.indicador_sociedad(ref ruta, second);
             }
 
+            if (this.proceso == ComValue.Enum.motivo_no_cobranza)
+            {
+                this.motivo_no_cobranza(ref ruta, second);
+            }
+
             ruta_csv = ruta;
 
             return bresult;
@@ -225,5 +230,19 @@ namespace ComAcceso
 
         }
 
+        private void motivo_no_cobranza(ref string ruta, int second = 0)
+        {
+
+            List<ComValue.MotivonoCobranza> oListMotivonoCobranza;
+            string d_ini = "";
+            string d_last = "";
+
+            oRecords.LastRangoFechaEjecucion(ComValue.Enum.motivo_no_cobranza, ref d_ini, ref d_last, second);
+            oListMotivonoCobranza = oRecords.GetMotivonoCobranza(d_ini, d_last);
+            ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.motivo_no_cobranza);
+
+            CreateCSV(oListMotivonoCobranza, ruta);
+
+        }
     }
 }

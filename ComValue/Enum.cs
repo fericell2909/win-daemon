@@ -20,7 +20,7 @@ namespace ComValue
         public const string anulacion_pam = "anulacion_pam";
         public const string indicador_staff = "indicador_staff";
         public const string indicador_sociedad = "indicador_sociedad";
-
+        public const string motivo_no_cobranza = "motivo_no_cobranza";
 
         public const string csv_ingreso_pam = "Generando CSV - Ingreso Flujo PAM . . .";
         public const string csv_recaudacion = "Generando CSV - Recaudacion . . .";
@@ -28,6 +28,7 @@ namespace ComValue
         public const string csv_anulacion_pam = "Generando CSV - Anulacion PAM . . .";
         public const string csv_indicador_staff = "Generando CSV - Indicador STAFF . . .";
         public const string csv_indicador_sociedad = "Generando CSV - Indicador Sociedad . . .";
+        public const string csv_motivo_no_cobranza = "Generando CSV - Motivo No Cobranza . . .";
 
 
         public const string eject_ingreso_pam = "Ejecutando - Ingreso Flujo PAM . . .";
@@ -36,6 +37,7 @@ namespace ComValue
         public const string eject_anulacion_pam = "Ejecutando - Anulacion PAM . . .";
         public const string eject_indicador_staff = "Ejecutando - Indicador STAFF . . .";
         public const string eject_indicador_sociedad = "Ejecutando - Indicador Sociedad . . .";
+        public const string eject_motivo_no_cobranza = "Ejecutando - Motivo No Cobranza . . .";
 
         public const string mensaje_csv_ok = "CSV Generado Correctamente.";
         public const string titulo_mensaje = "Atencion, Aviso Importante...";
