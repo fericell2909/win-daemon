@@ -1,16 +1,17 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AccesoNavitoOracle")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Procesos Automaticos")]
+[assembly: AssemblyDescription("Aplicacion de windows realizada en C# que consume data de medisyn y la envia a un servicio  de amsm satelite. Tiene un timer que se ejecuta en ciertas horas y dias de la semana.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AccesoNavitoOracle")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCompany("GUX - AMSM")]
+[assembly: AssemblyProduct("Procesos Automaticos")]
+[assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -34,3 +35,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("es-PE")]

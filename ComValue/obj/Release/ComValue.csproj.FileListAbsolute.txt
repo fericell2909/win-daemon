@@ -8,3 +8,4 @@ F:\Repositorios\amsmprocesosautomaticos\ComValue\bin\Release\ComValue.pdb
 F:\Repositorios\amsmprocesosautomaticos\ComValue\obj\Release\ComValue.csproj.CoreCompileInputs.cache
 F:\Repositorios\amsmprocesosautomaticos\ComValue\obj\Release\ComValue.dll
 F:\Repositorios\amsmprocesosautomaticos\ComValue\obj\Release\ComValue.pdb
+F:\Repositorios\amsmprocesosautomaticos\ComValue\obj\Release\ComValue.csproj.AssemblyReference.cache

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMenuPrincipal));
             this.tab_probar_conexion = new System.Windows.Forms.TabPage();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -77,9 +78,6 @@
             this.lblAmbiente = new System.Windows.Forms.Label();
             this.lblcargando = new System.Windows.Forms.Label();
             this.dglistado = new System.Windows.Forms.DataGridView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.timerProcesoAutomatico = new System.Windows.Forms.Timer(this.components);
-            this.timerHora = new System.Windows.Forms.Timer(this.components);
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ultimaeject = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,6 +87,9 @@
             this.accion = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CSV = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.timerProcesoAutomatico = new System.Windows.Forms.Timer(this.components);
+            this.timerHora = new System.Windows.Forms.Timer(this.components);
             this.tab_probar_conexion.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tab_listado_procesos.SuspendLayout();
@@ -610,28 +611,6 @@
             this.dglistado.TabIndex = 4;
             this.dglistado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dglistado_CellContentClick);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tab_listado_procesos);
-            this.tabControl1.Controls.Add(this.tab_probar_conexion);
-            this.tabControl1.Location = new System.Drawing.Point(1, 1);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1028, 475);
-            this.tabControl1.TabIndex = 4;
-            // 
-            // timerProcesoAutomatico
-            // 
-            this.timerProcesoAutomatico.Enabled = true;
-            this.timerProcesoAutomatico.Interval = 1000;
-            this.timerProcesoAutomatico.Tick += new System.EventHandler(this.timerProcesoAutomatico_Tick);
-            // 
-            // timerHora
-            // 
-            this.timerHora.Enabled = true;
-            this.timerHora.Interval = 1000;
-            this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick);
-            // 
             // id
             // 
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -719,6 +698,28 @@
             this.Tiempo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Tiempo.Width = 195;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tab_listado_procesos);
+            this.tabControl1.Controls.Add(this.tab_probar_conexion);
+            this.tabControl1.Location = new System.Drawing.Point(1, 1);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1028, 475);
+            this.tabControl1.TabIndex = 4;
+            // 
+            // timerProcesoAutomatico
+            // 
+            this.timerProcesoAutomatico.Enabled = true;
+            this.timerProcesoAutomatico.Interval = 1000;
+            this.timerProcesoAutomatico.Tick += new System.EventHandler(this.timerProcesoAutomatico_Tick);
+            // 
+            // timerHora
+            // 
+            this.timerHora.Enabled = true;
+            this.timerHora.Interval = 1000;
+            this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick);
+            // 
             // formMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -726,6 +727,7 @@
             this.ClientSize = new System.Drawing.Size(1041, 417);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "formMenuPrincipal";
