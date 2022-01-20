@@ -169,6 +169,12 @@ namespace AccesoNavitoOracle
 
                 }
 
+                if (Convert.ToInt32(dglistado.CurrentRow.Index + 1) == 8)
+                {
+                    this.generate_csv_export(ComValue.Enum.admision, ComValue.Enum.csv_admision);
+
+                }
+
 
             }
             // eject
@@ -220,6 +226,13 @@ namespace AccesoNavitoOracle
                 {
 
                     this.eject_process(ComValue.Enum.motivo_no_cobranza, ComValue.Enum.csv_motivo_no_cobranza, 1, 1, 0);
+
+                }
+
+                if (Convert.ToInt32(dglistado.CurrentRow.Index + 1) == 8)
+                {
+
+                    this.eject_process(ComValue.Enum.admision, ComValue.Enum.csv_admision, 1, 1, 0);
 
                 }
 
@@ -377,12 +390,19 @@ namespace AccesoNavitoOracle
                     {
 
                         if (veces_ejecutar == 0) {
+                            
                             this.eject_process(ComValue.Enum.ingreso_pam, ComValue.Enum.csv_ingreso_pam, 0, 0,0);
                             this.eject_process(ComValue.Enum.recaudacion, ComValue.Enum.csv_recaudacion, 0, 0,0);
                             this.eject_process(ComValue.Enum.envio_isapre, ComValue.Enum.csv_envio_isapre, 0, 0,0);
+                            this.eject_process(ComValue.Enum.anulacion_pam, ComValue.Enum.csv_anulacion_pam, 0, 0, 0);
+                            this.eject_process(ComValue.Enum.indicador_staff, ComValue.Enum.csv_indicador_staff, 0, 0, 0);
+                            this.eject_process(ComValue.Enum.indicador_sociedad, ComValue.Enum.csv_indicador_sociedad, 0, 0, 0);
+                            this.eject_process(ComValue.Enum.motivo_no_cobranza, ComValue.Enum.csv_motivo_no_cobranza, 0, 0, 0);
+                            this.eject_process(ComValue.Enum.admision, ComValue.Enum.csv_admision, 0, 0, 0);
 
                             this.CargarGrilla();
                             veces_ejecutar = -1;
+
                         }
 
                         

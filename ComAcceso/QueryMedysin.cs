@@ -320,5 +320,23 @@ namespace ComAcceso
 
         }
 
+        public string admision(string desde , string hasta)
+        {
+
+            string f_desde = desde;
+            string f_hasta = hasta;
+
+            string query;
+
+            query = @"SELECT id_ingreso, TO_CHAR(fecha_egreso, 'YYYY-MM-DD') fecha_egreso
+                      FROM adm_ingresos ai
+                      WHERE TO_CHAR(ai.FECHA_EGRESO,'YYYY-MM-DD') BETWEEN " + "'" + $"{f_desde}" + "'" + "AND " + "'" + $"{f_hasta}" + "'" +
+                      @"AND TO_CHAR(ai.FECHA_EGRESO, 'YYYY-MM-DD') >= " + "'" + $"{f_desde}" + "'" +
+                      @"AND TO_CHAR(ai.FECHA_EGRESO, 'YYYY-MM-DD') <= " + "'" + $"{f_hasta}" + "'";
+
+            return query;
+
+        }
+
     }
 }

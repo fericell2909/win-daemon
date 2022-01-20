@@ -21,6 +21,7 @@ namespace ComAcceso
         private string url_indicador_staff_post;
         private string url_indicador_sociedad_post;
         private string url_motivo_no_cobranza_post;
+        private string url_admision_post;
 
         private string result_send_recaudacion_post;
         private string cRutaLog = String.Empty;
@@ -46,6 +47,7 @@ namespace ComAcceso
             this.url_indicador_staff_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_indicador_staff"];
             this.url_indicador_sociedad_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_indicador_sociedad"];
             this.url_motivo_no_cobranza_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_motivo_no_cobranza"];
+            this.url_admision_post = this.urlWS + System.Configuration.ConfigurationManager.AppSettings["url_admision"];
 
             cRutaLog = System.Configuration.ConfigurationManager.AppSettings["ruta_log"];
 
@@ -184,7 +186,12 @@ namespace ComAcceso
             {
                 url = this.url_motivo_no_cobranza_post;
             }
-            
+
+            if (tipo == ComValue.Enum.admision)
+            {
+                url = this.url_admision_post;
+            }
+
 
             try 
             {

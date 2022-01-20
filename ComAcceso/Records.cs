@@ -51,6 +51,9 @@ namespace ComAcceso
 
             ComValue.StringProcesos objStrAuxProceso7 = new ComValue.StringProcesos("7", ComValue.Enum.motivo_no_cobranza, "Motivos no cobranza", ComValue.Enum.lbl_horario_second_initial);
 
+            ComValue.StringProcesos objStrAuxProceso8 = new ComValue.StringProcesos("8", ComValue.Enum.admision, "Actualizar fecha de alta en admisión", ComValue.Enum.lbl_horario_second_initial);
+
+
             objStringProcesos.Add(objStrAuxProceso);
             objStringProcesos.Add(objStrAuxProceso2);
             objStringProcesos.Add(objStrAuxProceso3);
@@ -58,7 +61,8 @@ namespace ComAcceso
             objStringProcesos.Add(objStrAuxProceso5);
             objStringProcesos.Add(objStrAuxProceso6);
             objStringProcesos.Add(objStrAuxProceso7);
-
+            objStringProcesos.Add(objStrAuxProceso8);
+            
             objStrAuxProceso = null;
             objStrAuxProceso2 = null;
             objStrAuxProceso3 = null;
@@ -66,6 +70,8 @@ namespace ComAcceso
             objStrAuxProceso5 = null;
             objStrAuxProceso6 = null;
             objStrAuxProceso7 = null;
+            objStrAuxProceso8 = null;
+
         }
         public List<ComValue.IngresoPam> GetIngresoPams(string d_ini , string d_end) {
             
@@ -474,6 +480,51 @@ namespace ComAcceso
 
                 oLogErrores.CreateLogFiles();
                 oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_numero_records + oListResult.Count.ToString() + ComValue.Enum.motivo_no_cobranza);
+
+            }
+
+            catch (Exception ex)
+            {
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ex.Message.ToString() + ex.StackTrace);
+            }
+
+
+            return oListResult;
+        }
+
+        public List<ComValue.Admision> GetAdmision(string d_ini, string d_end)
+        {
+
+            List<ComValue.Admision> oListResult = new List<ComValue.Admision>();
+
+            oLogErrores.CreateLogFiles();
+            oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_fecha_inicio + d_ini + " " + ComValue.Enum.log_fecha_termino + d_end + " " + ComValue.Enum.admision);
+
+            try
+            {
+
+                objOraConnect.Open();
+
+                objComand = new OracleCommand(objQueryMedysin.admision(d_ini, d_end), objOraConnect);
+                objComand.CommandType = System.Data.CommandType.Text;
+                objDataReader = objComand.ExecuteReader();
+
+                while (objDataReader.Read())
+
+                {
+                    ComValue.Admision oClsAdmision = new ComValue.Admision();
+
+                    oClsAdmision.Agregar(
+                        objDataReader.GetValue(0), objDataReader.GetValue(1));
+
+                    oListResult.Add(oClsAdmision);
+                    oClsAdmision = null;
+
+                }
+
+                oLogErrores.CreateLogFiles();
+                oLogErrores.ErrorLog(cRutaLog, ComValue.Enum.log_numero_records + oListResult.Count.ToString() + ComValue.Enum.admision);
 
             }
 

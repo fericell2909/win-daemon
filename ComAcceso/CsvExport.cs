@@ -77,6 +77,11 @@ namespace ComAcceso
                 this.motivo_no_cobranza(ref ruta, second);
             }
 
+            if (this.proceso == ComValue.Enum.admision)
+            {
+                this.admision(ref ruta, second);
+            }
+
             ruta_csv = ruta;
 
             return bresult;
@@ -242,6 +247,21 @@ namespace ComAcceso
             ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.motivo_no_cobranza);
 
             CreateCSV(oListMotivonoCobranza, ruta);
+
+        }
+
+        private void admision(ref string ruta, int second = 0)
+        {
+
+            List<ComValue.Admision> oListAdmision;
+            string d_ini = "";
+            string d_last = "";
+
+            oRecords.LastRangoFechaEjecucion(ComValue.Enum.admision, ref d_ini, ref d_last, second);
+            oListAdmision = oRecords.GetAdmision(d_ini, d_last);
+            ruta = @"" + this.cRutaCSV + "" + this.getNameCSV(ComValue.Enum.admision);
+
+            CreateCSV(oListAdmision, ruta);
 
         }
     }
